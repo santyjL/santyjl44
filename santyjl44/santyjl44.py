@@ -7,7 +7,11 @@ from .pages.contact import contact
 from .routers import ROUTES
 
 
-app = rx.App()
+app = rx.App(
+    stylesheets=[
+        "/keyframes.css"
+    ]
+)
 app.add_page(home, route=ROUTES["home"])
 app.add_page(about, route=ROUTES["about"])
 app.add_page(services, route=ROUTES["services"])

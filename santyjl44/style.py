@@ -1,5 +1,5 @@
 from enum import Enum
-
+import reflex as rx
 
 class Colors(Enum):
     PRIMARY = "#ff7043"
@@ -7,39 +7,86 @@ class Colors(Enum):
     ACCENT = "#d81b60"
     SUCCESS = "#22c55e"
     WARNING = "#f59e0b"
-    DANGER = "#ef4444"
+    BACKGROUND = "#18150f"
     WHITE = "#ffffff"
     BLACK = "#000000"
+    NAVBAR= "#0000"
+    LINEAS= "#A3482A"
+    DESTACAR = "#D68C2D"
 
+class Font(Enum):
+    TEXT_PRINCIPAL_COLOR= "#F5F2EC"
 
-class FontSize(Enum):
-    XS = "0.75rem"
-    SM = "0.875rem"
-    MD = "1rem"
-    LG = "1.25rem"
-    XL = "1.5rem"
-    XXL = "2rem"
-    DISPLAY = "3rem"
+fondo = dict[str,str](
+    bg="radial-gradient(circle, #fff, #000, transparent)",
+    animation="respirar 10s linear infinite"
+)
 
+body=dict[str,str](
+    bg=Colors.BACKGROUND.value,
+    width="85%",
+    max_width="1440px",
+    border_left=f"1px solid {Colors.LINEAS.value}",
+    border_right=f"1px solid {Colors.LINEAS.value}",
+    margin=0
+)
 
 navbar_style = dict[str, str](
-    background=Colors.PRIMARY.value,
+    background=Colors.NAVBAR.value,
     color=Colors.WHITE.value,
     padding="1rem",
+    position="fixed",
+    top="0",
     width="100%",
+    z_index=10,
 )
 
 hero_style = dict[str, str](
-    background=Colors.SECONDARY.value,
+    background_image=f"url('{rx.asset("hero.png")}')",
+    background_color=Colors.BLACK.value,
+    background_size="cover",
+    background_position="center",
     color=Colors.WHITE.value,
-    padding="4rem 1rem",
-    text_align="center",
+    padding="4rem 2rem",
+    width="100%",
+    height="85vh",
+    margin=0,
+    border_bottom=f"1px solid {Colors.LINEAS.value}",
+    text_align="right",
+)
+
+sobre_mi_style = dict[str, str](
+    border_right=f"1px solid {Colors.LINEAS.value}",
+    justify_items="center",
+    text_align="justify",
+    padding="2em",
+    min_width="45%",
+    flex_grow=0
+)
+
+boton_style = dict[str, str](
+    background_color=Colors.DESTACAR.value,
+    justify_items="center",
+    padding="1.5em",
+    margin="15px 0"
+)
+
+foto_sobre_mi_style = dict[str, str](
+    object_fit="cover",
+    min_width="50%",
+    flex_grow=1,
+    style=sobre_mi_style
+)
+
+sobre_mi_seccion_style = dict[str, str](
+    border=f"10px solid {Colors.LINEAS.value}"
 )
 
 footer_style = dict[str, str](
     background=Colors.PRIMARY.value,
     color=Colors.WHITE.value,
     padding="2rem 1rem",
+    width="100%",
     text_align="center",
 )
 
@@ -51,10 +98,6 @@ buttons_style = dict[str, str](
     cursor="pointer",
 )
 
-texts_style = dict[str, str](
-    color=Colors.BLACK.value,
-    font_size=FontSize.MD.value,
-)
 
 seo_style = dict[str, str]()
 
@@ -84,18 +127,30 @@ weather_style = dict[str, str](
     padding="1rem",
 )
 
-countdown_style = dict[str, str](
-    padding="2rem",
-    text_align="center",
-    color=Colors.ACCENT.value,
-    font_size=FontSize.XXL.value,
+proyecto_card_style = dict[str, str](
+    width="100%",
+    overflow="hidden",    
 )
 
-gallery_style = dict[str, str](
-    display="grid",
-    grid_template_columns="repeat(3, 1fr)",
-    gap="1rem",
-    padding="2rem",
+proyectos_carrusel_style = dict[str, str](
+    display="flex",
+    gap="0",
+    width="max-content",
+    border_top=f"1px solid {Colors.LINEAS.value}",
+    border_bottom=f"1px solid {Colors.LINEAS.value}",
+    animation="scroll_projects 20s linear infinite",
+    
+)
+
+proyectos_carrusel_barra=dict[str,str](
+    width="200px",
+    height="250px",
+    position="relative",
+    z_index=20,
+    border_top=f"1px solid {Colors.LINEAS.value}",
+    border_bottom=f"1px solid {Colors.LINEAS.value}",
+    padding="1em",
+    background_color=Colors.BACKGROUND.value
 )
 
 faq_style = dict[str, str](
