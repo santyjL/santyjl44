@@ -9,6 +9,7 @@ from ..style import (
     boton_style, body, fondo,
     servicios_style, youtube_style, skills_style
     )
+from ..states.logic import StateYoutube
 
 def sobre_mi () -> rx.Component:
     return rx.box(
@@ -62,6 +63,10 @@ def me_diferencia () -> rx.Component:
             ),
             rx.box(
                 rx.heading("Mi Canal De Youtube"),
+                rx.text(f"nombre: {StateYoutube.nombre_canal}"),
+                rx.text(f"Subscritores: {StateYoutube.subscribers}"),
+                rx.text(f"Vistas: {StateYoutube.total_views}"),
+                rx.text(f"videos: {StateYoutube.total_videos} "),
                 style=youtube_style
             ),
             rx.box(

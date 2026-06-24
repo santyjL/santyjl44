@@ -1,31 +1,69 @@
 import reflex as rx
 
+from ..services.youtube_api import (
+    youtube_client,
+    ChannelStats,
+    CHANNEL_ID,
+)
+
 
 class StateYoutube(rx.State):
-    videos: list[str] = []
-    channel_id: str = ""
 
+    stats: ChannelStats | None = None
 
-class StateSpotify(rx.State):
-    tracks: list[str] = []
-    artist_id: str = ""
+    error: str = ""
 
+    loading: bool = False
 
-class StateGithub(rx.State):
-    repos: list[str] = []
-    username: str = ""
+    async def load_canal_youtube(self):
 
+        self.loading = True
+        self.error = ""
 
-class StateWeather(rx.State):
-    temperature: str = ""
-    description: str = ""
-    city: str = ""
+        try:
 
+            self.stats = (
+                youtube_client.analyze_channel(
+                    CHANNEL_ID
+                )
+            )
 
-class StateWhatsapp(rx.State):
-    number: str = ""
-    message: str = ""
+        except Exception as e:
+
+            self.error = str(e)
+
+        finally:
+
+            self.loading = False
 
     @rx.var
-    def link(self) -> str:
-        return f"https://wa.me/{self.number}?text={self.message}"
+    def nombre_canal(self) -> str:
+
+        if not self.stats:
+            return ""
+
+        return self.stats.channel_name
+
+    @rx.var
+    def subscribers(self) -> str:
+
+        if not self.stats:
+            return "0"
+
+        return f"{self.stats.subscribers:,}"
+
+    @rx.var
+    def total_views(self) -> str:
+
+        if not self.stats:
+            return "0"
+
+        return f"{self.stats.total_views:,}"
+
+    @rx.var
+    def total_videos(self) -> str:
+
+        if not self.stats:
+            return "0"
+
+        return f"{self.stats.total_videos:,}"

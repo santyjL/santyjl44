@@ -1,9 +1,14 @@
 import logging
-from dataclasses import dataclass
-from dotenv import load_dotenv
 import os
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
+from dataclasses import dataclass
+
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY = os.getenv("YOUTUBE_API_KEY")
+CHANNEL_ID = "UCwtL_041j3xAgo6G42oMr3w"
 
 
 # =====================================================
@@ -27,7 +32,7 @@ def setup_logger() -> logging.Logger:
 
     return logger
 
-load_dotenv()
+
 logger = setup_logger()
 
 
@@ -49,87 +54,75 @@ class ChannelStats:
 
 class YouTubeChannelAnalyzer:
 
+    BASE_URL = (
+        "https://www.googleapis.com/youtube/v3/channels"
+    )
+
     def __init__(self, api_key: str):
+
+        if not api_key:
+            raise ValueError(
+                "YOUTUBE_API_KEY no encontrada"
+            )
+
         self.api_key = api_key
 
-        self.youtube = build(
-            "youtube",
-            "v3",
-            developerKey=self.api_key
-        )
-
-    # ---------------------------------------------
-    # Obtener información básica del canal
-    # ---------------------------------------------
-    def get_channel_data(self, channel_id: str) -> dict:
+    def get_channel_data(
+        self,
+        channel_id: str
+    ) -> dict:
 
         try:
 
-            request = self.youtube.channels().list(
-                part="snippet,statistics",
-                id=channel_id
+            response = requests.get(
+                self.BASE_URL,
+                params={
+                    "part": "snippet,statistics",
+                    "id": channel_id,
+                    "key": self.api_key,
+                },
+                timeout=10,
             )
 
-            response = request.execute()
+            response.raise_for_status()
 
-            if not response["items"]:
+            data = response.json()
+
+            if not data.get("items"):
                 raise ValueError(
                     f"No se encontró el canal {channel_id}"
                 )
 
-            return response["items"][0]
+            return data["items"][0]
 
-        except HttpError as e:
-            logger.error(f"Error HTTP: {e}")
+        except requests.exceptions.Timeout:
+
+            logger.exception(
+                "Tiempo de espera agotado"
+            )
+            raise
+
+        except requests.exceptions.ConnectionError:
+
+            logger.exception(
+                "Error de conexión"
+            )
+            raise
+
+        except requests.exceptions.HTTPError as e:
+
+            logger.exception(
+                f"Error HTTP: {e}"
+            )
             raise
 
         except Exception as e:
+
             logger.exception(
-                f"Error obteniendo datos del canal: {e}"
+                f"Error obteniendo datos: {e}"
             )
             raise
 
-    # ---------------------------------------------
-    # Obtener IDs de videos
-    # ---------------------------------------------
-    def get_video_ids(self, channel_id: str) -> list[str]:
-
-        video_ids = []
-
-        try:
-
-            request = self.youtube.search().list(
-                part="id",
-                channelId=channel_id,
-                maxResults=50,
-                type="video"
-            )
-
-            while request:
-
-                response = request.execute()
-
-                for item in response["items"]:
-                    video_ids.append(
-                        item["id"]["videoId"]
-                    )
-
-                request = self.youtube.search().list_next(
-                    request,
-                    response
-                )
-
-            return video_ids
-
-        except Exception as e:
-            logger.exception(
-                f"Error obteniendo videos: {e}"
-            )
-            raise
-
-    # ---------------------------------------------
-    # Método principal
-    # ---------------------------------------------
     def analyze_channel(
         self,
         channel_id: str
@@ -138,7 +131,7 @@ class YouTubeChannelAnalyzer:
         try:
 
             logger.info(
-                f"Analizando canal: {channel_id}"
+                f"Analizando canal {channel_id}"
             )
 
             channel_data = self.get_channel_data(
@@ -157,10 +150,11 @@ class YouTubeChannelAnalyzer:
                 ),
                 total_videos=int(
                     stats.get("videoCount", 0)
-                )
+                ),
             )
 
         except Exception as e:
+
             logger.exception(
                 f"Error analizando canal: {e}"
             )
@@ -168,49 +162,27 @@ class YouTubeChannelAnalyzer:
 
 
 # =====================================================
-# PRESENTACIÓN
+# INSTANCIA GLOBAL
 # =====================================================
 
-def show_results(stats: ChannelStats):
-
-    print("\n" + "=" * 50)
-
-    print(f"Canal: {stats.channel_name}")
-    print(f"Suscriptores: {stats.subscribers:,}")
-    print(f"Vistas Totales: {stats.total_views:,}")
-    print(f"Videos Subidos: {stats.total_videos:,}")
-
-    print("=" * 50)
+youtube_client = YouTubeChannelAnalyzer(
+    API_KEY
+)
 
 
 # =====================================================
-# MAIN
+# MAIN TEST
 # =====================================================
-
-def main():
-
-    API_KEY = os.getenv("YOUTUBE_API_KEY")
-
-    CHANNEL_ID = "UCwtL_041j3xAgo6G42oMr3w"
-
-    try:
-
-        analyzer = YouTubeChannelAnalyzer(
-            API_KEY
-        )
-
-        stats = analyzer.analyze_channel(
-            CHANNEL_ID
-        )
-
-        show_results(stats)
-
-    except Exception as e:
-
-        logger.critical(
-            f"Fallo fatal: {e}"
-        )
-
 
 if __name__ == "__main__":
-    main()
+
+    stats = youtube_client.analyze_channel(
+        CHANNEL_ID
+    )
+
+    print("\n" + "=" * 50)
+    print(f"Canal: {stats.channel_name}")
+    print(f"Subs: {stats.subscribers:,}")
+    print(f"Views: {stats.total_views:,}")
+    print(f"Videos: {stats.total_videos:,}")
+    print("=" * 50)
