@@ -7,7 +7,7 @@ class Colors(Enum):
     ACCENT = "#d81b60"
     SUCCESS = "#22c55e"
     WARNING = "#f59e0b"
-    BACKGROUND = "#18150f"
+    BACKGROUND = "#18150fc0"
     WHITE = "#ffffff"
     BLACK = "#000000"
     NAVBAR= "#0000"
@@ -18,13 +18,13 @@ class Font(Enum):
     TEXT_PRINCIPAL_COLOR= "#F5F2EC"
 
 fondo = dict[str,str](
-    bg="radial-gradient(circle, #fff, #000, transparent)",
-    animation="respirar 10s linear infinite"
+    bg="radial-gradient(circle, #550a03, #661115, transparent)",
+    animation="respirar 20s linear infinite"
 )
 
 body=dict[str,str](
     bg=Colors.BACKGROUND.value,
-    width="85%",
+    width="90%",
     max_width="1440px",
     border_left=f"1px solid {Colors.LINEAS.value}",
     border_right=f"1px solid {Colors.LINEAS.value}",
@@ -112,7 +112,33 @@ whatsapp_style = dict[str, str](
 )
 
 youtube_style = dict[str, str](
-    padding="1rem",
+    width= "30%",
+    height="400px",
+    border=f"1px solid {Colors.LINEAS.value}",
+    border_top=f"6px solid {Colors.LINEAS.value}",
+    border_radius="0 0 20px 20px",
+    justify_items="center",
+    padding="1em",
+)
+
+servicios_style = dict[str, str](
+    width= "30%",
+    height="400px",
+    border=f"1px solid {Colors.LINEAS.value}",
+    border_top=f"6px solid {Colors.LINEAS.value}",
+    border_radius="0 0 20px 20px",
+    justify_items="center",
+    padding="1em",
+)
+
+skills_style = dict[str, str](
+    width= "30%",
+    height="400px",
+    border=f"1px solid {Colors.LINEAS.value}",
+    border_top=f"6px solid {Colors.LINEAS.value}",
+    border_radius="0 0 20px 20px",
+    justify_items="center",
+    padding="1em"
 )
 
 spotify_style = dict[str, str](
@@ -156,5 +182,5 @@ proyectos_carrusel_barra=dict[str,str](
 faq_style = dict[str, str](
     padding="2rem",
     max_width="800px",
-    margin="0 auto",
+    margin="0",
 )
