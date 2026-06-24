@@ -67,6 +67,9 @@ def me_diferencia () -> rx.Component:
                 rx.text(f"Subscritores: {StateYoutube.subscribers}"),
                 rx.text(f"Vistas: {StateYoutube.total_views}"),
                 rx.text(f"videos: {StateYoutube.total_videos} "),
+                rx.video(
+                    src="https://www.youtube.com/watch?v=H7hDPqcUKhk"
+                ),
                 style=youtube_style
             ),
             rx.box(
@@ -90,6 +93,24 @@ def me_diferencia () -> rx.Component:
         )
     )
 
+def contacto() -> rx.Component:
+    return rx.box(
+        rx.center(
+            rx.text(
+                "si ves que puedo darte la solucion que buscas no lo dudes."
+            ),
+            rx.button(
+                "Contactame",
+                style=boton_style,
+                on_click=rx.redirect("https://youtube.com" , is_external=True)
+            ),
+            display="flex",
+            flex_direction="column",
+        ),
+        
+        width="100%",
+    )
+
 def home() -> rx.Component:
     return rx.center(
         navbar(),
@@ -98,6 +119,7 @@ def home() -> rx.Component:
             sobre_mi(),
             proyectos_carrusel(),
             me_diferencia(),
+            contacto(),
             footer(),
             style=body
         ),

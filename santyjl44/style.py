@@ -24,7 +24,7 @@ fondo = dict[str,str](
 
 body=dict[str,str](
     bg=Colors.BACKGROUND.value,
-    width="90%",
+    width="100%",
     max_width="1440px",
     border_left=f"1px solid {Colors.LINEAS.value}",
     border_right=f"1px solid {Colors.LINEAS.value}",
@@ -49,7 +49,7 @@ hero_style = dict[str, str](
     color=Colors.WHITE.value,
     padding="4rem 2rem",
     width="100%",
-    height="85vh",
+    height="100vh",
     margin=0,
     border_bottom=f"1px solid {Colors.LINEAS.value}",
     text_align="right",
