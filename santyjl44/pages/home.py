@@ -5,9 +5,10 @@ from ..components.hero import hero
 from ..components.footer import footer
 from ..components.proyectos_carrusel import proyectos_carrusel
 from ..style import (
-    sobre_mi_style, foto_sobre_mi_style,
+    contacto_style, sobre_mi_style, foto_sobre_mi_style,
     boton_style, body, fondo,
-    servicios_style, youtube_style, skills_style
+    servicios_style, youtube_style, skills_style,
+    me_diferencia_style, sobre_mi_seccion_style
     )
 from ..states.logic import StateYoutube
 
@@ -42,10 +43,7 @@ def sobre_mi () -> rx.Component:
             src=rx.asset("sobre_mi.png"),
             style=foto_sobre_mi_style
         ),
-        display="flex",
-        flex_flow="row nowrap",
-        columns=2,
-        margin=0
+        style=sobre_mi_seccion_style
         
     )
 
@@ -87,9 +85,8 @@ def me_diferencia () -> rx.Component:
                 ),
                 style=skills_style
             ),
-            gap="40px",
-            justify_content="center",
-            padding="1em",
+            
+            style=me_diferencia_style
         )
     )
 
@@ -107,8 +104,7 @@ def contacto() -> rx.Component:
             display="flex",
             flex_direction="column",
         ),
-        
-        width="100%",
+        style=contacto_style
     )
 
 def home() -> rx.Component:

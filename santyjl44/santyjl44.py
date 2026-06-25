@@ -10,7 +10,10 @@ from .routers import ROUTES
 
 app = rx.App(
     stylesheets=[
-        "/keyframes.css"
+        "/keyframes.css",
+        "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap",
+        "https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap",
+        "https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap",
     ]
 )
 app.add_page(home, route=ROUTES["home"], on_load=StateYoutube.load_canal_youtube(API_KEY, CHANNEL_ID))

@@ -14,7 +14,6 @@ def proyectos_carrusel() -> rx.Component:
     ]
 
     return rx.box(
-
         # ventana visible
         rx.hstack(
             rx.vstack(
