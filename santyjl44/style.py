@@ -6,8 +6,6 @@ class Colors(Enum):
     # PALETA PRINCIPAL - CAFETERÍA
     # ==================================================
 
-    PRIMARY = "#5A3420"       # Café principal
-    SECONDARY = "#E6D8C5"     # Papel envejecido
     ACCENT = "#A5502A"        # Terracota
     SUCCESS = "#22C55E"
     WARNING = "#F59E0B"
@@ -199,13 +197,20 @@ whatsapp_style = dict[str, str](
     right="1.5rem",
 )
 
-youtube_style = dict(
+card_trabjo = dict(
     width="30%",
     min_height="400px",
     background=Colors.PAPER.value,
     color=Colors.TEXT_DARK.value,
     border_radius=f"20px",
     padding="2rem",
+    box_shadow= None,
+    scale= 1,
+    transition="scale 0.7s 0.3s",
+    _hover={
+        "scale" : "1.05",
+        "box-shadow" : f"0 0 20px 0 {Colors.COFFEE.value}"
+    }
 )
 
 me_diferencia_style = dict(
@@ -214,25 +219,7 @@ me_diferencia_style = dict(
     color=Colors.TEXT_DARK.value,
     gap="40px",
     justify_content="center",
-    padding="150px 0 0 0",
-)
-
-servicios_style = dict(
-    width="30%",
-    min_height="400px",
-    background=Colors.PAPER.value,
-    color=Colors.TEXT_DARK.value,
-    border_radius=f"20px",
-    padding="2rem",
-)
-
-skills_style = dict(
-    width="30%",
-    min_height="400px",
-    background=Colors.PAPER.value,
-    color=Colors.TEXT_DARK.value,
-    border_radius=f"20px",
-    padding="2rem",
+    padding="150px 20px 40px 20px",
 )
 
 proyectos_style= dict(
