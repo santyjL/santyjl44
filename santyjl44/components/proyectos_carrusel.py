@@ -2,15 +2,16 @@ import reflex as rx
 
 from ..style import (
     proyecto_card_style, proyectos_carrusel_style,
-    proyectos_carrusel_barra, boton_style
+    proyectos_carrusel_barra, boton_style, proyectos_style,
+    Colors
     )
 
 
 def proyectos_carrusel() -> rx.Component:
     imagenes = [
-        "/placeholder.png",
-        "/placeholder.png",
-        "/placeholder.png",
+        rx.asset("proyectos/proyecto1.png"),
+        rx.asset("proyectos/proyecto2.png"),
+        rx.asset("proyectos/proyecto3.png")
     ]
 
     return rx.box(
@@ -29,10 +30,7 @@ def proyectos_carrusel() -> rx.Component:
                 *[
                     rx.image(
                         src=src,
-                        width="400px",
-                        height="250px",
-                        object_fit="cover",
-                        flex_shrink="0",
+                        style=proyectos_style
                     )
                     for src in imagenes * 2
                 ],

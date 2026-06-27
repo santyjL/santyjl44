@@ -14,7 +14,7 @@ class Colors(Enum):
     BACKGROUND = "#F2E8D8"    # Fondo principal
     WHITE = "#F8F4EE"
     BLACK = "#000000"
-    NAVBAR = "rgba(240,230,220,0.85)"
+    NAVBAR = "#2E1A1298"
     LINEAS = "#A5502A"
     DESTACAR = "#D38A3A"
 
@@ -31,6 +31,8 @@ class Colors(Enum):
     COFFEE_BLACK = "#140D09"
     COFFEE_DARK = "#2E1A12"
     COFFEE = "#5A3420"
+
+    VERDE= "#56D926"
 
     PAPER = "#F2E8D8"
     PAPER_DARK = "#E6D8C5"
@@ -77,7 +79,6 @@ body = dict(
 navbar_style = dict(
     background=Colors.NAVBAR.value,
     backdrop_filter="blur(12px)",
-    box_shadow="0 0 30px 0 #6669",
     color=Colors.WHITE.value,
     padding="1rem 2rem",
     margin="30px",
@@ -114,7 +115,6 @@ hero_style = dict(
 sobre_mi_style = dict(
     background=Colors.PAPER.value,
     color=Colors.TEXT_DARK.value,
-    border_right=f"1px solid {Colors.LINEAS.value}",
     justify_items="center",
     text_align="justify",
     padding="4rem",
@@ -126,7 +126,7 @@ sobre_mi_style = dict(
 boton_style = dict(
     background_color=Colors.DESTACAR.value,
     color=Colors.WHITE.value,
-    padding="0.9rem 2rem",
+    padding="1.5rem",
     border_radius="40px",
     cursor="pointer",
     transition="all .3s ease",
@@ -136,14 +136,36 @@ boton_style = dict(
 
 foto_sobre_mi_style = dict(
     object_fit="cover",
-    min_width="50%",
+    max_width="35%",
+    margin="50px",
+    border_radius="20px",
+    position="relative",
     flex_grow=1,
     filter="brightness(0.85)",
+)
+
+foto_datos_style= dict(
+    background_color=Colors.COFFEE.value,
+    backdrop_filter="blur(12px)",
+    color=Colors.TEXT_LIGHT.value,
+    padding="1rem",
+    display="flex",
+    flex_flow="row nowrap",
+    justify_content="center",
+    gap="15px",
+    position="absolute",
+    left="67.7%",
+    top="450px",
+    border_radius="10px",
+    height="80px",
+    width="30%",
+    z_index=20,
 )
 
 sobre_mi_seccion_style = dict(
     display="flex",
     flex_flow="row nowrap",
+    position="relative",
     columns=2,
     margin=0,
     background=Colors.PAPER.value,
@@ -213,6 +235,14 @@ skills_style = dict(
     padding="2rem",
 )
 
+proyectos_style= dict(
+    width="400px",
+    height="250px",
+    object_fit="cover",
+    box_shadow=f"0 0 10px 0 {Colors.VERDE.value}",
+    flex_shrink="0",
+)
+
 proyecto_card_style = dict(
     overflow="hidden",
     background=Colors.PAPER.value,
@@ -222,7 +252,7 @@ proyecto_card_style = dict(
 
 proyectos_carrusel_style = dict(
     display="flex",
-    gap="2rem",
+    gap="20px",
     width="max-content",
     padding="2rem 0",
     animation="scroll_projects 35s linear infinite",
@@ -230,10 +260,10 @@ proyectos_carrusel_style = dict(
 
 proyectos_carrusel_barra = dict(
     width="260px",
-    height="250px",
+    height="350px",
     position="relative",
     z_index=20,
-    padding="2rem",
+    padding="40px",
     background_color=Colors.PAPER_DARK.value,
     
 )

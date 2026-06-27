@@ -8,9 +8,21 @@ from ..style import (
     contacto_style, sobre_mi_style, foto_sobre_mi_style,
     boton_style, body, fondo,
     servicios_style, youtube_style, skills_style,
-    me_diferencia_style, sobre_mi_seccion_style
+    me_diferencia_style, sobre_mi_seccion_style,
+    foto_datos_style
     )
 from ..states.logic import StateYoutube
+
+
+def datos_canal(icon_tag, estado) -> rx.Component:
+    return rx.hstack(
+        rx.icon(
+            tag=icon_tag,
+            width="48px",
+            height="48px"
+        ),
+        rx.text(estado, font_size="2em", weight="bold"),
+    )
 
 def sobre_mi () -> rx.Component:
     return rx.box(
@@ -43,6 +55,12 @@ def sobre_mi () -> rx.Component:
             src=rx.asset("sobre_mi.png"),
             style=foto_sobre_mi_style
         ),
+        rx.box(
+            datos_canal("users-round", StateYoutube.subscribers),
+            datos_canal("eye", StateYoutube.total_views),
+            datos_canal("tv-minimal-play", StateYoutube.total_videos),
+            style=foto_datos_style
+        ),
         style=sobre_mi_seccion_style
         
     )
@@ -62,9 +80,6 @@ def me_diferencia () -> rx.Component:
             rx.box(
                 rx.heading("Mi Canal De Youtube"),
                 rx.text(f"nombre: {StateYoutube.nombre_canal}"),
-                rx.text(f"Subscritores: {StateYoutube.subscribers}"),
-                rx.text(f"Vistas: {StateYoutube.total_views}"),
-                rx.text(f"videos: {StateYoutube.total_videos} "),
                 rx.video(
                     src="https://www.youtube.com/watch?v=H7hDPqcUKhk"
                 ),
