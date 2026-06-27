@@ -15,6 +15,7 @@ class Colors(Enum):
     NAVBAR = "#2E1A1298"
     LINEAS = "#A5502A"
     DESTACAR = "#D38A3A"
+    DESTACAR_CLARO = "#D38A3A70"
 
     # ==================================================
     # COLORES ADICIONALES
@@ -124,12 +125,17 @@ sobre_mi_style = dict(
 boton_style = dict(
     background_color=Colors.DESTACAR.value,
     color=Colors.WHITE.value,
-    padding="1.5rem",
-    border_radius="40px",
+    padding="20px 70px",
+    border_radius="10px",
     cursor="pointer",
     transition="all .3s ease",
     margin="15px 0",
     font_family=Font.TEXT.value,
+    font_weight="bold",
+    _hover={
+        "background_color" : Colors.DESTACAR_CLARO.value,
+        "color" : Colors.TEXT_DARK.value
+    }
 )
 
 foto_sobre_mi_style = dict(
@@ -228,6 +234,10 @@ proyectos_style= dict(
     object_fit="cover",
     box_shadow=f"0 0 10px 0 {Colors.VERDE.value}",
     flex_shrink="0",
+    transition="scale .5s",
+    _hover={
+        "scale" : "1.05",
+    }
 )
 
 proyecto_card_style = dict(
@@ -255,9 +265,10 @@ proyectos_carrusel_barra = dict(
     
 )
 
-
 contacto_style= dict(
     width="100%",
+    align_items="center",
+    color=Colors.BLACK.value,
     background=Colors.PAPER_DARK.value,
     padding="150px 0 150px 0 ",
 )

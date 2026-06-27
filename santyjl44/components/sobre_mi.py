@@ -14,7 +14,17 @@ def datos_canal(icon_tag, estado) -> rx.Component:
             width="48px",
             height="48px"
         ),
-        rx.text(estado, font_size="2em", weight="bold"),
+        rx.text(
+            estado,
+            font_size="2em",
+            weight="bold"
+        ),
+        position="relative",
+        transition= "all .7s",
+        _hover={
+            "top" : "-10px",
+            "scale" : "1.03"
+        }
     )
 
 def sobre_mi () -> rx.Component:
