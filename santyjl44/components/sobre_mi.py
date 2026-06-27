@@ -4,7 +4,7 @@ from ..states.logic import StateYoutube
 from ..style import (
     sobre_mi_style, foto_sobre_mi_style,
     boton_style, sobre_mi_seccion_style,
-    foto_datos_style
+    foto_datos_style, Colors
 )
 
 def datos_canal(icon_tag, estado) -> rx.Component:
@@ -22,7 +22,7 @@ def datos_canal(icon_tag, estado) -> rx.Component:
         position="relative",
         transition= "all .7s",
         _hover={
-            "top" : "-10px",
+            "top" : "-5px",
             "scale" : "1.03"
         }
     )
@@ -30,39 +30,48 @@ def datos_canal(icon_tag, estado) -> rx.Component:
 def sobre_mi () -> rx.Component:
     return rx.box(
         rx.box(
+            rx.text(
+                "Sobre mi",
+                position="absolute",
+                top=140,
+                left=20,
+                color=Colors.ACCENT.value
+            ),
             rx.heading(
-                "Sobre Mi",
+                "Construyendo Ideas Que Dejan Huella",
                 margin="20px 0"
                 ),
             rx.text(
-            """mucho texto para rellenar la pagina y no se mire vacia porque si no no me sirve y
-            asi entonces extiendo mas el texto hasta que me de para todo un testamente donde heredo
-            los unicos 2 gatos que poseo porque son lo mas preciado para mi"""
+            """Apasionado por el desarrollo web y el diseño, me especializo en
+            crear experiencias digitales que no solo se ven bien, sino que funcionan
+            perfecto. Cada proyecto es una oportunidad para transformar ideas 
+            en soluciones reales."""
             ),
-            rx.vstack(
-                rx.button(
-                    "Conoceme mejor",
-                    style=boton_style,
-                    on_click=rx.redirect("https://youtube.com")
-                ),
-                rx.button(
-                    "Contactame",
-                    style=boton_style,
-                    on_click=rx.redirect("https://youtube.com")
-                ),
-                align_items="center"
+            rx.button(
+                "Contactame",
+                style=boton_style,
+                on_click=rx.redirect("https://youtube.com")
             ),
+            align_items="left",
             style=sobre_mi_style
         ),
-        rx.image(
-            src=rx.asset("sobre_mi.png"),
-            style=foto_sobre_mi_style
-        ),
         rx.box(
-            datos_canal("users-round", StateYoutube.subscribers),
-            datos_canal("eye", StateYoutube.total_views),
-            datos_canal("tv-minimal-play", StateYoutube.total_videos),
-            style=foto_datos_style
+            rx.image(
+                src=rx.asset("sobre_mi.png"),
+                style=foto_sobre_mi_style
+            ),
+            rx.box(
+                datos_canal("users-round", StateYoutube.subscribers),
+                datos_canal("eye", StateYoutube.total_views),
+                datos_canal("tv-minimal-play", StateYoutube.total_videos),
+                style=foto_datos_style
+            ),
+            rx.button(
+                "Mira el video de presentacion",
+                position="relative",
+                left="32%",
+                style=boton_style,
+            ),
         ),
         style=sobre_mi_seccion_style
         

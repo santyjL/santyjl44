@@ -119,6 +119,7 @@ sobre_mi_style = dict(
     padding="4rem",
     min_width="45%",
     flex_grow=0,
+    margin="0 50px",
     font_family=Font.TEXT.value,
 )
 
@@ -140,7 +141,7 @@ boton_style = dict(
 
 foto_sobre_mi_style = dict(
     object_fit="cover",
-    max_width="35%",
+    max_width="85%",
     margin="50px",
     border_radius="20px",
     position="relative",
@@ -173,7 +174,7 @@ sobre_mi_seccion_style = dict(
     columns=2,
     margin=0,
     background=Colors.PAPER.value,
-    padding="150px 0 0 0",
+    padding="150px 0 100px 0",
 )
 
 footer_style = dict(
@@ -232,7 +233,8 @@ proyectos_style= dict(
     width="400px",
     height="250px",
     object_fit="cover",
-    box_shadow=f"0 0 10px 0 {Colors.VERDE.value}",
+    box_shadow=f"0 0 10px 0 {Colors.ACCENT.value}",
+    border_radius="10px",
     flex_shrink="0",
     transition="scale .5s",
     _hover={
@@ -242,9 +244,9 @@ proyectos_style= dict(
 
 proyecto_card_style = dict(
     overflow="hidden",
-    background=Colors.PAPER.value,
+    background=Colors.PAPER_DARK.value,
     color=Colors.TEXT_DARK.value,
-    padding="150px 0 0 0"
+    padding="30px 0 0 0"
 )
 
 proyectos_carrusel_style = dict(
@@ -256,11 +258,12 @@ proyectos_carrusel_style = dict(
 )
 
 proyectos_carrusel_barra = dict(
-    width="260px",
-    height="350px",
+    width="100%",
     position="relative",
-    z_index=20,
-    padding="40px",
+    display="flex",
+    flex_flow="row nowrap",
+    justify_content="space-between",
+    padding="0 10px",
     background_color=Colors.PAPER_DARK.value,
     
 )
