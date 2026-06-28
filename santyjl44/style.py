@@ -31,7 +31,7 @@ class Colors(Enum):
     COFFEE_DARK = "#2E1A12"
     COFFEE = "#5A3420"
 
-    VERDE= "#56D926"
+    VERDE= "#25D366"
 
     PAPER = "#F2E8D8"
     PAPER_DARK = "#E6D8C5"
@@ -41,15 +41,11 @@ class Font(Enum):
     # Tipografías
 
     TITLE = "'Cormorant Garamond', serif"
-
     TEXT = "'Lora', serif"
-
     HANDWRITING = "'Caveat', cursive"
 
     # Colores de texto
-
     TEXT_PRINCIPAL_COLOR = "#F5F2EC"
-
     TEXT_DARK = "#2A1D17"
 
 fondo = dict(
@@ -154,6 +150,24 @@ boton_style = dict(
     }
 )
 
+boton_whatsApp=dict(
+    border=f"2px solid {Colors.VERDE.value}",
+    bg="transparent",
+    color="white",
+    width="100%",
+    font_family=Font.TEXT.value,
+)
+
+contenido_modal_contacto=dict(
+    max_width="900px",
+    background=Colors.COFFEE_DARK.value,
+    color=Colors.TEXT_LIGHT.value,
+    border=f"1px solid {Colors.LINEAS.value}",
+    border_left=f"5px solid {Colors.LINEAS.value}",
+    border_radius="20px",
+    padding="2rem",
+)
+
 foto_sobre_mi_style = dict(
     object_fit="cover",
     max_width="85%",
@@ -209,16 +223,6 @@ buttons_style = dict[str, str](
 
 seo_style = dict[str, str]()
 
-whatsapp_style = dict[str, str](
-    background=Colors.SUCCESS.value,
-    color=Colors.WHITE.value,
-    padding="0.75rem",
-    border_radius="50%",
-    position="fixed",
-    bottom="1.5rem",
-    right="1.5rem",
-)
-
 card_trabjo = dict(
     width="30%",
     min_height="400px",
@@ -263,11 +267,15 @@ proyectos_style= dict(
 )
 
 proyecto_modal=dict(
-    background_color=Colors.PAPER_DARK.value,
-    color=Colors.TEXT_DARK.value,
+    background_color=Colors.COFFEE_DARK.value,
+    color=Colors.TEXT_LIGHT.value,
     justify_items="center",
+    border=f"1px solid {Colors.LINEAS.value}",
+    border_left=f"5px solid {Colors.LINEAS.value}",
+    padding="2em",
     align_text="left",
-    width="70%",
+    max_width="800px",
+    overflow="hidden",
     height="90vh"
 )
 
@@ -276,7 +284,8 @@ titulo_modal=dict(
     padding="10px",
     font_family=Font.TITLE.value,
     font_size="2.5em",
-    border_bottom="1px solid #000",
+    color=Colors.TEXT_LIGHT.value,
+    border_bottom=f"1px solid {Colors.DESTACAR.value}",
 )
 
 imagen_proyecto_modal=dict(

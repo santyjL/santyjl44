@@ -1,10 +1,35 @@
 import reflex as rx
 import asyncio
+import requests
+import os
 from ..services.youtube_api import (
     youtube_client,
     ChannelStats,
     CHANNEL_ID,
 )
+
+class ContactState(rx.State):
+
+    async def enviar_formulario(self, form_data: dict):
+
+        try:
+            response = requests.post(
+                os.getenv("FORMSPREE"),
+                json=form_data,
+                timeout=10,
+            )
+            if response.status_code == 200:
+                return rx.toast.success(
+                    "Mensaje enviado correctamente ☕"
+                )
+            return rx.toast.error(
+                "No se pudo enviar el mensaje."
+            )
+
+        except Exception:
+            return rx.toast.error(
+                "Error de conexión."
+            )
 
 class HeroState(rx.State):
 
@@ -24,42 +49,28 @@ class HeroState(rx.State):
     async def start_typewriter(self):
 
         while True:
-
             word = self.words[self.current_word_index]
-
             # ESCRIBIR
             while len(self.current_text) < len(word):
-
                 async with self:
                     self.current_text = word[: len(self.current_text) + 1]
-
                 await asyncio.sleep(0.30)
-
             # ESPERAR
             await asyncio.sleep(1.4)
-
             # BORRAR
             while len(self.current_text) > 0:
-
                 async with self:
                     self.current_text = self.current_text[:-1]
-
                 await asyncio.sleep(0.14)
-
             # SIGUIENTE PALABRA
             async with self:
-                self.current_word_index = (
-                    self.current_word_index + 1
-                ) % len(self.words)
-
+                self.current_word_index = (self.current_word_index + 1) % len(self.words)
             await asyncio.sleep(0.2)
 
 class StateYoutube(rx.State):
 
     stats: ChannelStats | None = None
-
     error: str = ""
-
     loading: bool = False
 
     async def load_canal_youtube(self):
@@ -68,24 +79,18 @@ class StateYoutube(rx.State):
         self.error = ""
 
         try:
-
             self.stats = (
                 youtube_client.analyze_channel(
                     CHANNEL_ID
                 )
             )
-
         except Exception as e:
-
             self.error = str(e)
-
         finally:
-
             self.loading = False
 
     @rx.var
     def nombre_canal(self) -> str:
-
         if not self.stats:
             return ""
 
@@ -93,7 +98,6 @@ class StateYoutube(rx.State):
 
     @rx.var
     def subscribers(self) -> str:
-
         if not self.stats:
             return "0"
 
@@ -101,7 +105,6 @@ class StateYoutube(rx.State):
 
     @rx.var
     def total_views(self) -> str:
-
         if not self.stats:
             return "0"
 
@@ -109,7 +112,6 @@ class StateYoutube(rx.State):
 
     @rx.var
     def total_videos(self) -> str:
-
         if not self.stats:
             return "0"
 

@@ -1,8 +1,8 @@
-from turtle import right
 import reflex as rx
 
 from ..states.logic import HeroState
-from ..style import boton_style, hero_style, hero_titulo_style
+from ..components.contacto import boton_contacto
+from ..style import hero_style, hero_titulo_style
 
 
 def hero() -> rx.Component:
@@ -18,10 +18,7 @@ def hero() -> rx.Component:
                 width="450px",
                 align="left"
             ),
-            rx.button(
-                "Contactame ➡",
-                style=boton_style
-            )
+            boton_contacto()
 
         ),
         style=hero_style,

@@ -1,6 +1,7 @@
 import reflex as rx
 
 from ..states.logic import StateYoutube
+from ..components.contacto import boton_contacto
 from ..style import (
     sobre_mi_style, foto_sobre_mi_style,
     boton_style, sobre_mi_seccion_style,
@@ -50,11 +51,7 @@ def sobre_mi () -> rx.Component:
             perfecto. Cada proyecto es una oportunidad para transformar ideas 
             en soluciones reales."""
             ),
-            rx.button(
-                "Contactame",
-                style=boton_style,
-                on_click=rx.redirect("https://youtube.com")
-            ),
+            boton_contacto(),
             align_items="left",
             style=sobre_mi_style
         ),
