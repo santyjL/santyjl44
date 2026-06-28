@@ -163,7 +163,8 @@ def me_diferencia () -> rx.Component:
 
                 style=card_trabjo
             ),
-            style=me_diferencia_style
+            style=me_diferencia_style,
+            id="servicios"
         ), 
     )
 

@@ -33,5 +33,6 @@ def contacto() -> rx.Component:
                 style=boton_style
             )
         ),
-        style=contacto_style    
+        style=contacto_style,
+        id="contacto"
     )

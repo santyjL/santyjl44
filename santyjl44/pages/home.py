@@ -10,8 +10,6 @@ from ..components.proyectos_carrusel import proyectos_carrusel
 from ..style import body, fondo
 
 
-
-
 def home() -> rx.Component:
     return rx.center(
         navbar(),

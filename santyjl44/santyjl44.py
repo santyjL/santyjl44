@@ -25,6 +25,3 @@ app.add_page(
         ],
     
     )
-app.add_page(about, route=ROUTES["about"])
-app.add_page(services, route=ROUTES["services"])
-app.add_page(contact, route=ROUTES["contact"])

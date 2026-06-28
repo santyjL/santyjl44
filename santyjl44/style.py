@@ -80,11 +80,13 @@ navbar_style = dict(
     backdrop_filter="blur(12px)",
     color=Colors.WHITE.value,
     padding="1rem 2rem",
+    box_sizing="border-box",
     margin="30px",
     position="fixed",
     top="0",
     border_radius="50px",
     width="80%",
+    height="60px",
     z_index=100,
 )
 
@@ -238,6 +240,7 @@ proyectos_style= dict(
     border_radius="10px",
     flex_shrink="0",
     transition="scale .5s",
+    cursor="pointer",
     _hover={
         "scale" : "1.05",
     }

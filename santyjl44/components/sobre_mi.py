@@ -1,4 +1,5 @@
 import reflex as rx
+from ..routers import ROUTES 
 
 from ..states.logic import StateYoutube
 from ..style import (
@@ -73,6 +74,6 @@ def sobre_mi () -> rx.Component:
                 style=boton_style,
             ),
         ),
-        style=sobre_mi_seccion_style
-        
+        style=sobre_mi_seccion_style,
+        id="sobre-mi"
     )
