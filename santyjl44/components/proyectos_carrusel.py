@@ -5,7 +5,7 @@ from ..style import (
     proyecto_card_style, proyectos_carrusel_style,
     proyectos_carrusel_barra, boton_style, proyectos_style,
     proyecto_modal, titulo_modal,imagen_proyecto_modal,
-    Colors,botones_modal
+    Colors,botones_modal, Font
     )
 
 
@@ -59,10 +59,16 @@ def proyectos_carrusel() -> rx.Component:
                 position="absolute",
                 left=20,
                 z_index=10,
+                
                 color=Colors.ACCENT.value
             ),
         rx.hstack(
-            rx.heading("Algunos De Mis Trabajos", margin="25px",),
+            rx.heading(
+                "Algunos De Mis Trabajos",
+                margin="25px",
+                size="8",
+                font_family=Font.TITLE.value,
+            ),
             style=proyectos_carrusel_barra
             ),
         rx.hstack(

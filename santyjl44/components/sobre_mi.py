@@ -1,11 +1,10 @@
 import reflex as rx
-from ..routers import ROUTES 
 
 from ..states.logic import StateYoutube
 from ..style import (
     sobre_mi_style, foto_sobre_mi_style,
     boton_style, sobre_mi_seccion_style,
-    foto_datos_style, Colors
+    foto_datos_style, Colors, Font
 )
 
 def datos_canal(icon_tag, estado) -> rx.Component:
@@ -40,8 +39,10 @@ def sobre_mi () -> rx.Component:
             ),
             rx.heading(
                 "Construyendo Ideas Que Dejan Huella",
-                margin="20px 0"
-                ),
+                margin="20px 0",
+                size="8",
+                font_family=Font.TITLE.value
+            ),
             rx.text(
             """Apasionado por el desarrollo web y el diseño, me especializo en
             crear experiencias digitales que no solo se ven bien, sino que funcionan

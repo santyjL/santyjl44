@@ -1,7 +1,7 @@
 import reflex as rx
 from ..routers import ROUTES
 
-from ..style import footer_style, Colors
+from ..style import footer_style, Colors, Font
 
 def footer_item(text: str, href: str) -> rx.Component:
     return rx.link(rx.text(text, size="3"), href=href, color=Colors.ACCENT.value)
@@ -9,7 +9,13 @@ def footer_item(text: str, href: str) -> rx.Component:
 
 def footer_items_1() -> rx.Component:
     return rx.flex(
-        rx.heading("NAVEGACION", size="4", weight="bold", as_="h3"),
+        rx.heading(
+            "NAVEGACION",
+            size="4",
+            font_family=Font.TITLE.value,
+            weight="bold",
+            as_="h3"
+            ),
         footer_item("Inicio", "/#"),
         footer_item("Sobre Mi", ROUTES["about"]),
         footer_item("proyectos", ROUTES["proyectos"]),
@@ -21,7 +27,15 @@ def footer_items_1() -> rx.Component:
     )
 
 def social_link(label: str, href: str) -> rx.Component:
-    return rx.link(rx.text(label, weight="bold"), href=href)
+    return rx.link(
+        rx.text(
+            label,
+            size="5",
+            weight="bold",
+            font_family=Font.HANDWRITING.value
+            ),
+        href=href
+    )
 
 def socials() -> rx.Component:
     return rx.flex(
@@ -47,13 +61,19 @@ def footer() -> rx.Component:
                             height="auto",
                             border_radius="25%",
                         ),
-                        rx.heading("SantyjL44", size="7", weight="bold"),
+                        rx.heading(
+                            "SANTYJL",
+                            size="7",
+                            font_family=Font.HANDWRITING.value,
+                            weight="bold"
+                            ),
                         align_items="center",
                     ),
                     rx.text(
                         "Desarrollador Web Y Otras Cosas",
-                        size="5",
+                        size="7",
                         white_space="nowrap",
+                        font_family=Font.TITLE.value,
                         weight="bold",
                     ),
                     rx.text(
@@ -78,7 +98,8 @@ def footer() -> rx.Component:
                 socials(),
                 rx.text(
                         "© 2026 SantyjL44",
-                        size="3",
+                        size="5",
+                        font_family=Font.HANDWRITING.value,
                         white_space="nowrap",
                         weight="medium",
                     ),

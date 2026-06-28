@@ -1,6 +1,6 @@
 import reflex as rx
 
-from ..style import contacto_style, boton_style, Colors
+from ..style import contacto_style, boton_style, Colors, Font
 
 def contacto() -> rx.Component:
     return rx.center(
@@ -19,7 +19,8 @@ def contacto() -> rx.Component:
             rx.vstack(
                 rx.heading(
                     "¿Tienes Un Proyecto En Mente?",
-                    font_size="1.5em"
+                    font_size="1.8em",
+                    font_family=Font.TITLE.value
                     ),
                 rx.text(
                     "Estoy listo para ayudarte a hacerlo realidad",

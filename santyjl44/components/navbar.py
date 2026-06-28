@@ -1,6 +1,6 @@
 import reflex as rx
 
-from ..style import navbar_style
+from ..style import navbar_style, Font
 from ..routers import ROUTES
 
 def identificadores(nombre, id) -> rx.Component:
@@ -29,7 +29,7 @@ def navbar() -> rx.Component:
                 height="auto",
                 border_radius="25%",
             ),
-            rx.heading("SANTYJL"),
+            rx.heading("SANTYJL", font_family=Font.HANDWRITING.value,),
             cursor="pointer",
             on_click=rx.redirect(path="/")
             ),

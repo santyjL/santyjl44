@@ -1,7 +1,7 @@
 import reflex as rx
 
 from ..style import (
-    Colors, card_trabjo,me_diferencia_style,
+    Colors, card_trabjo,me_diferencia_style,Font
     )
 
 def titulo_card_trabajo(icon, titulo, subtitulo) -> rx.Component:
@@ -18,7 +18,11 @@ def titulo_card_trabajo(icon, titulo, subtitulo) -> rx.Component:
             border_radius="50%"
         ),
         rx.vstack(
-            rx.heading(titulo, font_size="1.5em"),
+            rx.heading(
+                titulo,
+                font_size="1.5em",
+                font_family=Font.TITLE.value,
+                ),
             rx.text(subtitulo, position="relative", top="-10px")
         ),
         margin_bottom="20px",

@@ -2,7 +2,7 @@ from turtle import right
 import reflex as rx
 
 from ..states.logic import HeroState
-from ..style import boton_style, hero_style
+from ..style import boton_style, hero_style, hero_titulo_style
 
 
 def hero() -> rx.Component:
@@ -11,16 +11,11 @@ def hero() -> rx.Component:
         rx.vstack(
             rx.heading(
                 HeroState.current_text,
-                animation="blink 0.8s infinite",
-                border_right="5px solid #D38A3A",
-                size="9",
-                height="60px",
-                positon="relative",
-                right="180px"
+                style=hero_titulo_style
             ),
             rx.text(
                 "Desarrollo soluciones digitales que combinan diseño, funcionalidad y una experiencia unica.",
-                width="400px",
+                width="450px",
                 align="left"
             ),
             rx.button(

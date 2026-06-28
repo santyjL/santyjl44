@@ -84,6 +84,7 @@ navbar_style = dict(
     margin="30px",
     position="fixed",
     top="0",
+    font_family=Font.TEXT.value,
     border_radius="50px",
     width="80%",
     height="60px",
@@ -112,6 +113,17 @@ hero_style = dict(
     display="flex",
     justify_content="flex-end",
     align_items="center",
+)
+
+hero_titulo_style=dict(
+    animation="blink 0.8s infinite",
+    border_right="5px solid #D38A3A",
+    font_size="4.5em",
+    font_family=Font.TITLE.value,
+    height="50px",
+    positon="relative",
+    top ="-20px",
+    right="180px"
 )
 
 sobre_mi_style = dict(
@@ -260,6 +272,8 @@ proyecto_modal=dict(
 titulo_modal=dict(
     margin="10px",
     padding="10px",
+    font_family=Font.TITLE.value,
+    font_size="2.5em",
     border_bottom="1px solid #000",
 )
 
