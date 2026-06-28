@@ -20,10 +20,11 @@ def datos_canal(icon_tag, estado) -> rx.Component:
             weight="bold"
         ),
         position="relative",
-        transition= "all .7s",
+        top=0,
+        transition= "all .7s .1s",
         _hover={
             "top" : "-5px",
-            "scale" : "1.03"
+            "scale" : "1.05"
         }
     )
 

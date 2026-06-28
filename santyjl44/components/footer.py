@@ -33,16 +33,17 @@ def social_link(label: str, href: str) -> rx.Component:
             size="5",
             weight="bold",
             font_family=Font.HANDWRITING.value
-            ),
+        ),
+        is_external=True,
         href=href
     )
 
 def socials() -> rx.Component:
     return rx.flex(
-        social_link("IG", "/#"),
-        social_link("YT", "/#"),
-        social_link("META", "/#"),
-        social_link("GITHUB", "/#"),
+        social_link("INSTAGRAM", "https://www.instagram.com/santyjl44/"),
+        social_link("YOUTUBE", "https://www.youtube.com/@santyjL44"),
+        social_link("FACEBOOK", "https://www.facebook.com/profile.php?id=61591109342839"),
+        social_link("GITHUB", "https://github.com/santyjL"),
         spacing="3",
         justify="start",
         width="100%",
@@ -97,7 +98,7 @@ def footer() -> rx.Component:
             rx.hstack(
                 socials(),
                 rx.text(
-                        "© 2026 SantyjL44",
+                        "© 2026 SANTYJL",
                         size="5",
                         font_family=Font.HANDWRITING.value,
                         white_space="nowrap",

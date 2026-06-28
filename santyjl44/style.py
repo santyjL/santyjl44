@@ -251,12 +251,14 @@ proyectos_style= dict(
     box_shadow=f"0 0 10px 0 {Colors.ACCENT.value}",
     border_radius="10px",
     flex_shrink="0",
-    transition="all .5s",
+    transition="all .5s 0.3s",
     cursor="pointer",
     position="relative",
+    top=0,
     _hover={
-        "scale" : "1.05",
-        "top" : "-20px"
+        "scale" : "1.07",
+        "top" : "-20px",
+        "box-shadow" : f"0 0 30px 0 {Colors.ACCENT.value}",
     }
 )
 
