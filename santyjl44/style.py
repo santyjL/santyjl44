@@ -102,6 +102,7 @@ hero_style = dict(
     background_position="center",
     color=Colors.WHITE.value,
     margin=0,
+    padding="0 40px 0 0",
     width="100%",
     height="100vh",
     border_bottom=f"1px solid {Colors.LINEAS.value}",

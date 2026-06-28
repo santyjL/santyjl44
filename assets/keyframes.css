@@ -7,24 +7,17 @@
     }
 }
 
-@keyframes respirar {
-    0% {
-        background-size: 50% 50%;
-    }
+@keyframes blink {
 
-    25% {
-        background-size: 100% 100%;
+    0% {
+        border-right: 5px solid #D38A3A;
     }
 
     50% {
-        background-size: 150% 150%;
-    }
-
-    75% {
-        background-size: 100% 100%;
+        border-right: 5px solid transparent;
     }
 
     100% {
-        background-size: 50% 50%;
+        border-right: 5px solid #D38A3A;
     }
 }

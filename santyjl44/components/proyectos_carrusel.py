@@ -16,7 +16,7 @@ def proyectos_carrusel() -> rx.Component:
     return rx.box(
         # ventana visible
         rx.text(
-                "proyectos",
+                "Proyectos",
                 position="absolute",
                 left=20,
                 z_index=10,
