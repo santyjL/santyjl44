@@ -239,11 +239,43 @@ proyectos_style= dict(
     box_shadow=f"0 0 10px 0 {Colors.ACCENT.value}",
     border_radius="10px",
     flex_shrink="0",
-    transition="scale .5s",
+    transition="all .5s",
     cursor="pointer",
+    position="relative",
     _hover={
         "scale" : "1.05",
+        "top" : "-20px"
     }
+)
+
+proyecto_modal=dict(
+    background_color=Colors.PAPER_DARK.value,
+    color=Colors.TEXT_DARK.value,
+    justify_items="center",
+    align_text="left",
+    width="70%",
+    height="90vh"
+)
+
+titulo_modal=dict(
+    margin="10px",
+    padding="10px",
+    border_bottom="1px solid #000",
+)
+
+imagen_proyecto_modal=dict(
+    width="100%",
+    height="300px",
+    border_radius="10px",
+    box_shadow="0 10px 30px rgba(0,0,0,0.25)",
+    object_fit="cover",
+)
+
+botones_modal=dict(
+    display="flex",
+    flex_flow="row nowrap",
+    justify_content="space-between",
+    width="100%"
 )
 
 proyecto_card_style = dict(
@@ -258,7 +290,7 @@ proyectos_carrusel_style = dict(
     gap="20px",
     width="max-content",
     padding="2rem 0",
-    animation="scroll_projects 35s linear infinite",
+    animation="scroll_projects 15s linear infinite",
 )
 
 proyectos_carrusel_barra = dict(

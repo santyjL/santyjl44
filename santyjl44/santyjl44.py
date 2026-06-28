@@ -1,9 +1,7 @@
 import reflex as rx
 
 from .pages.home import home
-from .pages.about import about
-from .pages.services import services
-from .pages.contact import contact
+
 from .states.logic import StateYoutube, HeroState
 from .services.youtube_api import API_KEY, CHANNEL_ID
 from .routers import ROUTES
