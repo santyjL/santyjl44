@@ -8,6 +8,55 @@ from ..style import (
     foto_datos_style, Colors, Font
 )
 
+YOUTUBE_PRESENTACION = "https://www.youtube.com/embed/sNUA8qe5aoc"
+
+def modal_presentacion() -> rx.Component:
+    return rx.dialog.root(
+        rx.dialog.trigger(
+            rx.button(
+                "Mira el video de presentación",
+                position="relative",
+                left="32%",
+                style=boton_style,
+            )
+        ),
+
+        rx.dialog.content(
+
+            rx.el.iframe(
+                src=YOUTUBE_PRESENTACION,
+                width="100%",
+                height="500px",
+                allow=(
+                    "accelerometer; autoplay; "
+                    "clipboard-write; encrypted-media; "
+                    "gyroscope; picture-in-picture"
+                ),
+                allow_full_screen=True,
+                border="none",
+                border_radius="10px",
+            ),
+
+            rx.dialog.close(
+                rx.icon_button(
+                    "x",
+                    position="absolute",
+                    top="15px",
+                    right="15px",
+                    bg=Colors.ACCENT.value,
+                )
+            ),
+
+            background=Colors.COFFEE_BLACK.value,
+            padding="1rem",
+            max_width="900px",
+            width="90vw",
+            border=f"1px solid {Colors.LINEAS.value}",
+            border_top=f"5px solid {Colors.DESTACAR.value}",
+            border_radius="20px",
+        ),
+    )
+
 def datos_canal(icon_tag, estado) -> rx.Component:
     return rx.hstack(
         rx.icon(
@@ -66,12 +115,7 @@ def sobre_mi () -> rx.Component:
                 datos_canal("tv-minimal-play", StateYoutube.total_videos),
                 style=foto_datos_style
             ),
-            rx.button(
-                "Mira el video de presentacion",
-                position="relative",
-                left="32%",
-                style=boton_style,
-            ),
+            modal_presentacion(),
         ),
         style=sobre_mi_seccion_style,
         id="sobre-mi"
