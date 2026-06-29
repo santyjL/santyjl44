@@ -196,6 +196,23 @@ foto_datos_style= dict(
     z_index=20,
 )
 
+cv_descarga_style= dict(
+    bg="transparent",
+    border=f"1px solid {Colors.DESTACAR.value}",
+    color=Colors.WHITE.value,
+    padding="20px 30px",
+    border_radius="10px",
+    cursor="pointer",
+    transition="all .3s ease",
+    margin="15px 0",
+    font_family=Font.TEXT.value,
+    font_weight="bold",
+    _hover={
+        "border" : f"1px solid {Colors.WHITE.value}",
+        "color" : Colors.DESTACAR.value
+    }
+)
+
 sobre_mi_seccion_style = dict(
     display="flex",
     flex_flow="row nowrap",
