@@ -95,7 +95,7 @@ def footer() -> rx.Component:
                 width="100%",
             ),
             rx.divider(),
-            rx.hstack(
+            rx.flex(
                 socials(),
                 rx.text(
                         "© 2026 SANTYJL",
@@ -105,6 +105,7 @@ def footer() -> rx.Component:
                         weight="medium",
                     ),
                 width="100%",
+                flex_flow="row wrap"
             ),
             spacing="5",
             width="100%",

@@ -15,9 +15,8 @@ def modal_presentacion() -> rx.Component:
         rx.dialog.trigger(
             rx.button(
                 "Mira el video de presentación",
-                position="relative",
-                left="32%",
                 style=boton_style,
+
             )
         ),
 
@@ -61,12 +60,12 @@ def datos_canal(icon_tag, estado) -> rx.Component:
     return rx.hstack(
         rx.icon(
             tag=icon_tag,
-            width="48px",
-            height="48px"
+            width=["32px", "48px"],
+            height=["32px", "48px"], 
         ),
         rx.text(
             estado,
-            font_size="2em",
+            font_size=["1.3em","1.8em"],
             weight="bold"
         ),
         position="relative",
@@ -104,18 +103,20 @@ def sobre_mi () -> rx.Component:
             align_items="left",
             style=sobre_mi_style
         ),
-        rx.box(
+        rx.flex(
             rx.image(
                 src=rx.asset("sobre_mi.png"),
                 style=foto_sobre_mi_style
             ),
-            rx.box(
+            modal_presentacion(),
+            rx.flex(
                 datos_canal("users-round", StateYoutube.subscribers),
                 datos_canal("eye", StateYoutube.total_views),
                 datos_canal("tv-minimal-play", StateYoutube.total_videos),
                 style=foto_datos_style
             ),
-            modal_presentacion(),
+            flex_flow="column wrap",
+            justify_content="center"
         ),
         style=sobre_mi_seccion_style,
         id="sobre-mi"

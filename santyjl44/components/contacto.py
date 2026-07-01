@@ -123,16 +123,20 @@ def boton_contacto() -> rx.Component:
 
 def contacto() -> rx.Component:
     return rx.center(
-        rx.hstack(
+        rx.flex(
             rx.box(
                 rx.icon(
                     tag="rocket",
-                    width="48px",
-                    height="48px",
+                    width="38px",
+                    height="38px",
+                    align="center",
                     color=Colors.COFFEE.value,
                 ),
                 bg=Colors.PAPER.value,
                 padding="0.5em",
+                width="56px",
+                height="56px",
+                align_items="center",
                 border_radius="50%"
             ),
             rx.vstack(
@@ -148,7 +152,10 @@ def contacto() -> rx.Component:
                     opacity=0.7
                 )
             ),
-            boton_contacto()
+            boton_contacto(),
+            flex_flow="row wrap",
+            justify_content="center"
+            
         ),
         style=contacto_style,
         id="contacto"

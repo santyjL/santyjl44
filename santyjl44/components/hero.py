@@ -2,7 +2,7 @@ import reflex as rx
 
 from ..states.logic import HeroState
 from ..components.contacto import boton_contacto
-from ..style import hero_style, hero_titulo_style, cv_descarga_style
+from ..style import hero_style, hero_titulo_style, hero_texto_style, cv_descarga_style
 
 
 def cv_descarga() -> rx.Component:
@@ -25,12 +25,12 @@ def hero() -> rx.Component:
             ),
             rx.text(
                 "Desarrollo soluciones digitales que combinan diseño, funcionalidad y una experiencia unica.",
-                width="450px",
-                align="left"
+                style=hero_texto_style
             ),
-            rx.hstack(
+            rx.flex(
                 boton_contacto(),
-                cv_descarga()
+                cv_descarga(),
+                flex_flow="row wrap"
             )
 
         ),

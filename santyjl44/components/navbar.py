@@ -1,6 +1,6 @@
 import reflex as rx
 
-from ..style import navbar_style, Font
+from ..style import navbar_style, Font, Colors
 from ..routers import ROUTES
 
 def identificadores(nombre, id) -> rx.Component:
@@ -19,6 +19,50 @@ def identificadores(nombre, id) -> rx.Component:
         on_click=rx.redirect(path=id)
     )
 
+def navbar_movil () -> rx.Component:
+    return rx.mobile_only(
+        rx.drawer.root(
+            rx.drawer.trigger(
+                rx.icon_button(
+                    "menu",
+                    variant="ghost",
+                    color="white",
+                )
+            ),
+
+            rx.drawer.overlay(),
+
+            rx.drawer.portal(
+                rx.drawer.content(
+                    rx.vstack(
+                        rx.drawer.close(
+                            identificadores("Inicio", "/"),
+                        ),
+                        rx.drawer.close(
+                            identificadores("Sobre Mi", ROUTES["about"]),
+                        ),
+                        rx.drawer.close(
+                            identificadores("Proyectos", ROUTES["proyectos"]),
+                        ),
+                        rx.drawer.close(
+                            identificadores("Servicios", ROUTES["services"]),
+                        ),rx.drawer.close(
+                            identificadores("Contacto", ROUTES["contact"]),
+                        ),
+
+                        spacing="4",
+                        width="100%",
+                        align="start",
+                        padding="2rem",
+                    ),
+                    bg=Colors.COFFEE_DARK.value,
+                    border_left=f"3px solid {Colors.DESTACAR.value}",
+                )
+            ),
+            direction="right",
+        )
+    )
+
 def navbar() -> rx.Component:
     return rx.box(
         rx.hstack(
@@ -35,11 +79,19 @@ def navbar() -> rx.Component:
             ),
             
             rx.spacer(),
-            identificadores("Inicio", "/"),
-            identificadores("Sobre Mi", ROUTES["about"]),
-            identificadores("proyectos", ROUTES["proyectos"]),
-            identificadores("Servicios", ROUTES["services"]),
-            identificadores("Contacto", ROUTES["contact"]),
+            rx.desktop_only(
+                rx.hstack(
+                    identificadores("Inicio", "/"),
+                    identificadores("Sobre Mi", ROUTES["about"]),
+                    identificadores("Proyectos", ROUTES["proyectos"]),
+                    identificadores("Servicios", ROUTES["services"]),
+                    identificadores("Contacto", ROUTES["contact"]),
+                    spacing="5",
+                )
+            ),
+            rx.mobile_only(
+                navbar_movil()
+            ),
         ),
         style=navbar_style,
     )

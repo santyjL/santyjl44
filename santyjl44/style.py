@@ -1,6 +1,8 @@
 from enum import Enum
 import reflex as rx
 
+
+
 class Colors(Enum):
     # ==================================================
     # PALETA PRINCIPAL - CAFETERÍA
@@ -48,6 +50,27 @@ class Font(Enum):
     TEXT_PRINCIPAL_COLOR = "#F5F2EC"
     TEXT_DARK = "#2A1D17"
 
+TABLET = "@media screen and (max-width: 1024px)"
+MOBILE = "@media screen and (max-width: 768px)"
+MOBILE_SM = "@media screen and (max-width: 480px)"
+
+
+def combinar_estilos(*estilos: dict) -> dict:
+    resultado: dict = {}
+    for estilo in estilos:
+        for clave, valor in estilo.items():
+            if (
+                isinstance(clave, str)
+                and clave.startswith("@media")
+                and clave in resultado
+                and isinstance(resultado[clave], dict)
+                and isinstance(valor, dict)
+            ):
+                resultado[clave] = {**resultado[clave], **valor}
+            else:
+                resultado[clave] = valor
+    return resultado
+
 fondo = dict(
     bg="""
     radial-gradient(
@@ -71,24 +94,36 @@ body = dict(
     font_family=Font.TEXT.value,
 )
 
-navbar_style = dict(
-    background=Colors.NAVBAR.value,
-    backdrop_filter="blur(12px)",
-    color=Colors.WHITE.value,
-    padding="1rem 2rem",
-    box_sizing="border-box",
-    margin="30px",
-    position="fixed",
-    top="0",
-    font_family=Font.TEXT.value,
-    border_radius="50px",
-    width="80%",
-    height="60px",
-    z_index=100,
-)
+navbar_style = {
+    "background": Colors.NAVBAR.value,
+    "backdrop_filter": "blur(12px)",
+    "width": "80%",
+    "height": "60px",
+    "padding": "0.5rem 1rem",
+    "position": "fixed",
+    "top": "10px",
+    "left": "50%",
+    "transform": "translateX(-50%)",
+    "border_radius": "50px",
+    "z_index": "100",
+    "border": f"1px solid {Colors.DESTACAR_CLARO.value}",
 
-hero_style = dict(
-    background_image=f"""
+    TABLET: {
+        "width": "90%",
+    },
+
+    MOBILE: {
+        "top":"0",
+        "align":"center",
+        "width": "100%",
+        "height": "55px",
+        "border_radius": "0",
+        "padding": "0.5rem 1rem",
+    },
+}
+
+hero_style = {
+    "background_image": f"""
     linear-gradient(
         to right,
         rgba(28,18,13,0.15),
@@ -97,58 +132,106 @@ hero_style = dict(
     url('{rx.asset("hero.png")}')
     """,
 
-    background_size="cover",
-    background_position="center",
-    color=Colors.WHITE.value,
-    margin=0,
-    padding="0 40px 0 0",
-    width="100%",
-    height="100vh",
-    border_bottom=f"1px solid {Colors.LINEAS.value}",
-    text_align="right",
-    display="flex",
-    justify_content="flex-end",
-    align_items="center",
-)
+    "background_size": "cover",
+    "background_position": "center",
+    "color": Colors.WHITE.value,
+    "margin": 0,
+    "padding": "40px",
+    "width": "100%",
+    "height": "100vh",
+    "border_bottom": f"1px solid {Colors.LINEAS.value}",
+    "text_align": "right",
+    "display": "flex",
+    "justify_content": "flex-end",
+    "align_items": "center",
 
-hero_titulo_style=dict(
-    animation="blink 0.8s infinite",
-    border_right="5px solid #D38A3A",
-    font_size="4.5em",
-    font_family=Font.TITLE.value,
-    height="50px",
-    positon="relative",
-    top ="-20px",
-    right="180px"
-)
+    TABLET: {
+        "padding": "0 20px",
+    },
 
-sobre_mi_style = dict(
-    background=Colors.PAPER.value,
-    color=Colors.TEXT_DARK.value,
-    justify_items="center",
-    text_align="justify",
-    padding="4rem",
-    min_width="45%",
-    flex_grow=0,
-    margin="0 50px",
-    font_family=Font.TEXT.value,
-)
+    MOBILE: {
+        "justify_content": "center",
+        "text_align": "center",
+        "padding": "0 20px",
+    },
+}
 
-boton_style = dict(
-    background_color=Colors.DESTACAR.value,
-    color=Colors.WHITE.value,
-    padding="20px 70px",
-    border_radius="10px",
-    cursor="pointer",
-    transition="all .3s ease",
-    margin="15px 0",
-    font_family=Font.TEXT.value,
-    font_weight="bold",
-    _hover={
-        "background_color" : Colors.DESTACAR_CLARO.value,
-        "color" : Colors.TEXT_DARK.value
-    }
-)
+hero_texto_style={
+    "width":"450px",
+    "align":"left",
+
+    MOBILE: {
+        "width":"300px",
+        "align":"center",
+    },
+}
+
+hero_titulo_style = {
+    "animation": "blink 0.8s infinite",
+    "border_right": f"5px solid {Colors.DESTACAR.value}",
+    "font_size": "4.5em",
+    "font_family": Font.TITLE.value,
+    "height": "50px",
+    "position": "relative",
+    "top": "-20px",
+
+    TABLET: {
+        "font_size": "4em",
+    },
+
+    MOBILE: {
+        "font_size": "3em",
+        "height": "35px",
+        "align":"center",
+    },
+
+    MOBILE_SM: {
+        "font_size": "2.4em",
+        "height": "28px",
+        "align":"center",
+    },
+}
+
+sobre_mi_style = {
+    "background": Colors.PAPER.value,
+    "color": Colors.TEXT_DARK.value,
+    "justify_items": "center",
+    "text_align": "justify",
+    "padding": "4rem",
+    "min_width": "45%",
+    "margin": "0 50px",
+    "font_family": Font.TEXT.value,
+
+    TABLET: {
+        "padding": "2rem",
+        "margin": "0",
+    },
+
+    MOBILE: {
+        "min_width": "100%",
+        "margin": "0",
+        "padding": "2rem",
+    },
+}
+
+boton_style = {
+    "background_color": Colors.DESTACAR.value,
+    "color": Colors.WHITE.value,
+    "padding": "20px 70px",
+    "border_radius": "10px",
+    "margin":"auto",
+
+    MOBILE: {
+        "width": "70%",
+        "padding": "18px 20px",
+        "margin" :"auto"
+    },
+
+    "_hover": {
+        "background_color": Colors.DESTACAR_CLARO.value,
+        "color": Colors.TEXT_DARK.value,
+    },
+}
 
 boton_whatsApp=dict(
     border=f"2px solid {Colors.VERDE.value}",
@@ -158,49 +241,71 @@ boton_whatsApp=dict(
     font_family=Font.TEXT.value,
 )
 
-contenido_modal_contacto=dict(
-    max_width="900px",
-    background=Colors.COFFEE_DARK.value,
-    color=Colors.TEXT_LIGHT.value,
-    border=f"1px solid {Colors.LINEAS.value}",
-    border_left=f"5px solid {Colors.LINEAS.value}",
-    border_radius="20px",
-    padding="2rem",
-)
+contenido_modal_contacto = {
+    "max_width": "900px",
+    "background": Colors.COFFEE_DARK.value,
+    "padding": "2rem",
 
-foto_sobre_mi_style = dict(
-    object_fit="cover",
-    max_width="85%",
-    margin="50px",
-    border_radius="20px",
-    position="relative",
-    flex_grow=1,
-    filter="brightness(0.85)",
-)
+    MOBILE: {
+        "max_width": "95vw",
+        "padding": "1rem",
+    },
+}
 
-foto_datos_style= dict(
-    background_color=Colors.COFFEE.value,
-    backdrop_filter="blur(12px)",
-    color=Colors.TEXT_LIGHT.value,
-    padding="1rem",
-    display="flex",
-    flex_flow="row nowrap",
-    justify_content="center",
-    gap="15px",
-    position="absolute",
-    left="67.7%",
-    top="450px",
-    border_radius="10px",
-    height="80px",
-    width="30%",
-    z_index=20,
-)
+foto_sobre_mi_style = {
+    "object_fit": "cover",
+    "max_width": "85%",
+    "margin": "50px",
+    "border_radius": "20px",
+    "filter": "brightness(0.85)",
+
+    MOBILE: {
+        "max_width": "80%",
+        "margin": "auto",
+    },
+}
+
+foto_datos_style = {
+    "background_color": Colors.COFFEE.value,
+    "backdrop_filter": "blur(12px)",
+    "color": Colors.TEXT_LIGHT.value,
+    "padding": "1rem 1.25rem",
+    "display": "flex",
+    "flex_flow": "row nowrap",
+    "align-self":"center",
+    "align_items": "center",
+    "justify_content": "center",
+    "gap": "1rem",
+    "border_radius": "10px",
+    "height": "80px",
+    "width": "80%",
+
+
+    MOBILE: {
+        "position": "relative",
+        "left": "auto",
+        "bottom": "auto",
+        "width": "80%",
+        "margin": "1.5rem auto 0 auto",
+        "height": "auto",
+        "padding": "0.75rem 1rem",
+        "justify_content": "space-around",
+        "gap": "0.5rem",
+        "border_radius": "12px",
+    },
+
+    MOBILE_SM: {
+        "flex_flow": "row wrap",
+        "gap": "0.75rem",
+        "padding": "0.75rem 0.5rem",
+    },
+}
 
 cv_descarga_style= dict(
     bg="transparent",
     border=f"1px solid {Colors.DESTACAR.value}",
     color=Colors.WHITE.value,
-    padding="20px 30px",
+    padding="20px 10px",
     border_radius="10px",
     cursor="pointer",
     transition="all .3s ease",
@@ -213,23 +318,33 @@ cv_descarga_style= dict(
     }
 )
 
-sobre_mi_seccion_style = dict(
-    display="flex",
-    flex_flow="row nowrap",
-    position="relative",
-    columns=2,
-    margin=0,
-    background=Colors.PAPER.value,
-    padding="150px 0 100px 0",
-)
+sobre_mi_seccion_style = {
+    "display": "flex",
+    "flex_flow": "row nowrap",
+    "position": "relative",
+    "background": Colors.PAPER.value,
+    "padding": "150px 0 100px 0",
 
-footer_style = dict(
-    background=Colors.SURFACE_DARK.value,
-    color=Colors.WHITE.value,
-    padding="2em",
-    width="100%",
-)
+    TABLET: {
+        "flex_flow": "column nowrap",
+    },
 
+    MOBILE: {
+        "flex_flow": "column nowrap",
+        "padding": "100px 0 60px 0",
+    },
+}
+
+footer_style = {
+    "background": Colors.SURFACE_DARK.value,
+    "color": Colors.WHITE.value,
+    "padding": "2em",
+
+    MOBILE: {
+        "padding": "1.5rem",
+        "text_align": "center",
+    },
+}
 buttons_style = dict[str, str](
     background=Colors.ACCENT.value,
     color=Colors.WHITE.value,
@@ -240,85 +355,91 @@ buttons_style = dict[str, str](
 
 seo_style = dict[str, str]()
 
-card_trabjo = dict(
-    width="30%",
-    min_height="400px",
-    background=Colors.PAPER.value,
-    color=Colors.TEXT_DARK.value,
-    border_radius=f"20px",
-    padding="2rem",
-    box_shadow= None,
-    scale= 1,
-    transition="scale 0.7s 0.3s",
-    _hover={
-        "scale" : "1.05",
-        "box-shadow" : f"0 0 20px 0 {Colors.COFFEE.value}"
-    }
-)
+card_trabjo = {
+    "width": "30%",
+    "min_height": "400px",
+    "background": Colors.PAPER.value,
+    "border_radius": "20px",
+    "padding": "2rem",
+
+    TABLET: {
+        "width": "45%",
+    },
+
+    MOBILE: {
+        "width": "100%",
+    },
+}
 
 me_diferencia_style = dict(
     overflow="hidden",
     background=Colors.PAPER_DARK.value,
     color=Colors.TEXT_DARK.value,
+    display="flex",
+    flex_flow="row wrap",
     gap="40px",
     justify_content="center",
     padding="150px 20px 40px 20px",
 )
 
-proyectos_style= dict(
-    width="400px",
-    height="250px",
-    object_fit="cover",
-    box_shadow=f"0 0 10px 0 {Colors.ACCENT.value}",
-    border_radius="10px",
-    flex_shrink="0",
-    transition="all .5s 0.3s",
-    cursor="pointer",
-    position="relative",
-    top=0,
-    _hover={
-        "scale" : "1.07",
-        "top" : "-20px",
-        "box-shadow" : f"0 0 30px 0 {Colors.ACCENT.value}",
-    }
-)
+proyectos_style = {
+    "width": "400px",
+    "height": "250px",
 
-proyecto_modal=dict(
-    background_color=Colors.COFFEE_DARK.value,
-    color=Colors.TEXT_LIGHT.value,
-    justify_items="center",
-    border=f"1px solid {Colors.LINEAS.value}",
-    border_left=f"5px solid {Colors.LINEAS.value}",
-    padding="2em",
-    align_text="left",
-    max_width="800px",
-    overflow="hidden",
-    height="90vh"
-)
+    TABLET: {
+        "width": "320px",
+        "height": "220px",
+    },
 
-titulo_modal=dict(
-    margin="10px",
-    padding="10px",
-    font_family=Font.TITLE.value,
-    font_size="2.5em",
-    color=Colors.TEXT_LIGHT.value,
-    border_bottom=f"1px solid {Colors.DESTACAR.value}",
-)
+    MOBILE: {
+        "width": "280px",
+        "height": "180px",
+    },
+}
 
-imagen_proyecto_modal=dict(
-    width="100%",
-    height="300px",
-    border_radius="10px",
-    box_shadow="0 10px 30px rgba(0,0,0,0.25)",
-    object_fit="cover",
-)
+proyecto_modal = {
+    "background_color": Colors.COFFEE_DARK.value,
+    "color": Colors.TEXT_LIGHT.value,
+    "padding": "2em",
+    "max_width": "800px",
+    "height": "90vh",
 
-botones_modal=dict(
-    display="flex",
-    flex_flow="row nowrap",
-    justify_content="space-between",
-    width="100%"
-)
+    MOBILE: {
+        "max_width": "95vw",
+        "padding": "1rem",
+    },
+}
+
+titulo_modal = {
+    "font_family": Font.TITLE.value,
+    "font_size": "2.5em",
+
+    MOBILE: {
+        "font_size": "1.8em",
+    },
+}
+
+imagen_proyecto_modal = {
+    "width": "100%",
+    "height": "300px",
+    "object-fit": "cover",
+
+    MOBILE: {
+        "height": "150px",
+        "object-fit": "cover",
+    },
+}
+
+botones_modal = {
+    "display": "flex",
+    "flex_flow": "row nowrap",
+    "justify_content": "space-between",
+
+    MOBILE: {
+        "flex_flow": "column nowrap",
+        "gap": "10px",
+    },
+}
 
 proyecto_card_style = dict(
     overflow="hidden",
@@ -346,10 +467,11 @@ proyectos_carrusel_barra = dict(
     
 )
 
-contacto_style= dict(
-    width="100%",
-    align_items="center",
-    color=Colors.BLACK.value,
-    background=Colors.PAPER_DARK.value,
-    padding="150px 0 150px 0 ",
-)
+contacto_style = {
+    "align_items": "center",
+    "color": Colors.BLACK.value,
+    "flex-flow":"row wrap",
+    "background": Colors.PAPER_DARK.value,
+    "padding": "150px 0",
+
+}
