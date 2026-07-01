@@ -8,7 +8,9 @@ from ..style import (
     foto_datos_style, Colors, Font
 )
 
-YOUTUBE_PRESENTACION = "https://www.youtube.com/embed/sNUA8qe5aoc"
+YOUTUBE_PRESENTACION = "https://www.youtube.com/embed/nKjbnKBTLD8"
+
+
 
 def modal_presentacion() -> rx.Component:
     return rx.dialog.root(
