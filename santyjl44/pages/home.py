@@ -5,7 +5,7 @@ from ..components.hero import hero
 from ..components.footer import footer
 from .. components.contacto import contacto
 from ..components.sobre_mi import sobre_mi
-from ..components.trabajo import me_diferencia
+from ..components.trabajo import ofrezco_servicio
 from ..components.proyectos_carrusel import proyectos_carrusel
 from ..style import body, fondo
 
@@ -15,9 +15,9 @@ def home() -> rx.Component:
         navbar(),
         rx.box(
             hero(),
-            sobre_mi(),
+            ofrezco_servicio(),
             proyectos_carrusel(),
-            me_diferencia(),
+            sobre_mi(),
             contacto(),
             footer(),
             style=body

@@ -355,10 +355,10 @@ buttons_style = dict[str, str](
 
 seo_style = dict[str, str]()
 
-card_trabjo = {
-    "width": "30%",
+servicios_seccion = {
+    "width": "90%",
     "min_height": "400px",
-    "background": Colors.PAPER.value,
+    "background": Colors.PAPER_DARK.value,
     "border_radius": "20px",
     "padding": "2rem",
 
@@ -371,15 +371,49 @@ card_trabjo = {
     },
 }
 
-me_diferencia_style = dict(
+proceso_seccion = {
+    "width": "100%",
+    "margin": "0",
+    "min_height": "400px",
+    "background": Colors.PAPER.value,
+    "padding": "2rem",
+
+    TABLET: {
+        "width": "100%",
+    },
+
+    MOBILE: {
+        "width": "100%",
+    },
+}
+
+card_servicios = {
+    "height" : "200px",
+    "padding": "10px",
+    "margin" : "0.5em",
+    "width" : "23%",
+    "background-color" : Colors.PAPER.value,
+    "border_radius" : "20px",
+    TABLET: {
+            "width": "100%",
+        },
+
+    MOBILE: {
+        "width": "100%",
+    },
+}
+
+ofrezco_servicio_style = dict(
     overflow="hidden",
     background=Colors.PAPER_DARK.value,
     color=Colors.TEXT_DARK.value,
+    width="100%",
+    margin= 0,
     display="flex",
+    gap="80px",
     flex_flow="row wrap",
-    gap="40px",
     justify_content="center",
-    padding="150px 20px 40px 20px",
+    padding="150px 0 40px 0",
 )
 
 proyectos_style = {

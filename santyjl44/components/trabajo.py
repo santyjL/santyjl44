@@ -1,7 +1,7 @@
 import reflex as rx
 
 from ..style import (
-    Colors, card_trabjo,me_diferencia_style,Font
+    Colors, servicios_seccion,proceso_seccion,card_servicios,ofrezco_servicio_style,Font
     )
 
 def titulo_card_trabajo(icon, titulo, subtitulo) -> rx.Component:
@@ -9,28 +9,34 @@ def titulo_card_trabajo(icon, titulo, subtitulo) -> rx.Component:
         rx.box(
             rx.icon(
                 tag=icon,
-                width="32px",
-                height="32px",
-                color=Colors.COFFEE.value,
+                width="48px",
+                height="48px",
+                color=Colors.DESTACAR.value,
             ),
             bg=Colors.PAPER_DARK.value,
-            padding="0.5em",
+            padding="0.8em",
             border_radius="50%"
         ),
         rx.vstack(
             rx.heading(
                 titulo,
-                font_size="1.5em",
+                font_size="2em",
+                color=Colors.TEXT_DARK.value,
                 font_family=Font.TITLE.value,
                 ),
-            rx.text(subtitulo, position="relative", top="-10px")
+            rx.text(subtitulo, font_size="1.1em", position="relative", top="-10px")
         ),
+        padding="0.4em 0",
         margin_bottom="20px",
         border_bottom="1px solid #111",
+        border_radius="10px 10px 0 0",
+        color=Colors.DESTACAR.value,
     )
 
+
+
 def contenido_cards_servicios(icon, titulo, descripcion) -> rx.Component:
-    return rx.hstack(
+    return rx.box(
         rx.box(
             rx.icon(
                 tag=icon,
@@ -40,12 +46,20 @@ def contenido_cards_servicios(icon, titulo, descripcion) -> rx.Component:
             ),
             bg=Colors.PAPER_DARK.value,
             padding="0.3em",
-            border_radius="50%"
+            border_radius="50%",
+            width="48px",
+            height="48px",
+            ),
+            rx.vstack(
+                rx.heading(titulo, font_size="1.1em"),
+                rx.text(
+                    descripcion,
+                    position="relative",
+                    top="-10px",
+                    opacity=0.7
+                )
         ),
-        rx.vstack(
-            rx.heading(titulo, font_size="1.1em"),
-            rx.text(descripcion,position="relative", top="-10px", opacity=0.7)
-        )
+        style=card_servicios
     )
 
 def contenido_cards_proceso(num, titulo, descripcion) -> rx.Component:
@@ -91,7 +105,7 @@ def contenido_cards_tecnologias(icon, nombre) -> rx.Component:
         ),
     )
 
-def me_diferencia () -> rx.Component:
+def ofrezco_servicio () -> rx.Component:
     return rx.box(
         rx.flex(
             rx.box(
@@ -100,27 +114,32 @@ def me_diferencia () -> rx.Component:
                     "Servicios Que Ofrezco",
                     "Soluciones digitales a medida"
                 ),
-                contenido_cards_servicios(
-                    icon="monitor",
-                    titulo="Landing Pages",
-                    descripcion="Paginas personalizadas y relevantes donde los visitantes se convierten en nuevos clientes"
+                rx.center(
+                    contenido_cards_servicios(
+                        icon="monitor",
+                        titulo="Landing Pages",
+                        descripcion="Paginas personalizadas y relevantes donde los visitantes se convierten en nuevos clientes"
                     ),
-                contenido_cards_servicios(
-                    icon="building-2",
-                    titulo="Sitios Empresariales",
-                    descripcion="Webs profecionales que reflejan la identidad de la marca"
+                    contenido_cards_servicios(
+                        icon="building-2",
+                        titulo="Sitios Empresariales",
+                        descripcion="Webs profecionales que reflejan la identidad de la marca"
                     ),
-                contenido_cards_servicios(
-                    icon="square-user-round",
-                    titulo="Porfolios",
-                    descripcion="Muestra tus trabajos de forma clara, atractiva y profecional"
+                    contenido_cards_servicios(
+                        icon="square-user-round",
+                        titulo="Porfolios",
+                        descripcion="Muestra tus trabajos de forma clara, atractiva y profecional"
                     ),
-                contenido_cards_servicios(
-                    icon="unlink",
-                    titulo="Link Bios",
-                    descripcion="Paginas de enlaces personalizados para centralizar tu presencia ONLINE"
+                    contenido_cards_servicios(
+                        icon="unlink",
+                        titulo="Link Bios",
+                        descripcion="Paginas de enlaces personalizados para centralizar tu presencia ONLINE"
                     ),
-                style=card_trabjo
+                    displey="flex",
+                    flex_flow="row wrap"
+                ),
+                
+                style=servicios_seccion
             ),
             rx.box(
                 titulo_card_trabajo(
@@ -148,26 +167,9 @@ def me_diferencia () -> rx.Component:
                     titulo="Entrega y Soporte",
                     descripcion="Entrego tu Pagina, desplegada y con soporte para que todo funcione perfectamente"
                     ),
-            style=card_trabjo
+            style=proceso_seccion
             ),
-            rx.box(
-                titulo_card_trabajo(
-                    "code-xml",
-                    "Tecnologias Que Uso",
-                    "Herramientas para crear soluciones"
-                ),
-                contenido_cards_tecnologias("https://cdn-icons-png.flaticon.com/128/5968/5968544.png", "python"),
-                contenido_cards_tecnologias("https://cdn-icons-png.flaticon.com/128/152/152843.png", "HTML5"),
-                contenido_cards_tecnologias("https://cdn-icons-png.flaticon.com/128/11518/11518868.png", "Git"),
-                contenido_cards_tecnologias("https://cdn-icons-png.flaticon.com/128/732/732007.png", "CSS3"),
-                contenido_cards_tecnologias("https://cdn-icons-png.flaticon.com/128/733/733609.png", "GitHub"),
-                contenido_cards_tecnologias("https://cdn-icons-png.flaticon.com/128/2930/2930014.png", "Apis"),
-                contenido_cards_tecnologias(rx.asset("cursor.svg"), "Cursor IDE"),
-                contenido_cards_tecnologias(rx.asset("reflex_icon.svg"), "Reflex Framework"),
-
-                style=card_trabjo
-            ),
-            style=me_diferencia_style,
+            style=ofrezco_servicio_style,
             id="servicios"
         ), 
     )
