@@ -85,7 +85,14 @@ def contenido_cards_proceso(num, titulo, descripcion) -> rx.Component:
         style=card_servicios
     )
 
-def precios_cards(nombre:str, precio:int, caracteristicas:list[str], borde_color="#999") -> rx.Component:
+def precios_cards(
+    nombre:str,
+    precio:int,
+    caracteristicas:list[str],
+    borde_color="#999",
+    bg=Colors.PAPER.value
+    ) -> rx.Component:
+
     return rx.vstack(
         rx.text(
             nombre,
@@ -112,12 +119,10 @@ def precios_cards(nombre:str, precio:int, caracteristicas:list[str], borde_color
             for caracteristica in caracteristicas
             ]
         ),
-        rx.button(
-            "Elegir Plan",
-            style=boton_style
-        ),
         style=card_precios,
-        border=f"2px solid {borde_color}"
+        bg= bg,
+        border_top=f"3px solid {borde_color}",
+        border_bottom=f"2px solid {borde_color}"
     )
 
 def ofrezco_servicio () -> rx.Component:
@@ -167,13 +172,15 @@ def ofrezco_servicio () -> rx.Component:
                             nombre="Profecional",
                             precio=120,
                             caracteristicas = caracteristicas_plan_profesional,
-                            borde_color=Colors.ACCENT.value
+                            borde_color=Colors.ACCENT.value,
+                            bg= Colors.DESTACAR_CLARO.value
                         ),
                         precios_cards(
                             nombre="Premium",
                             precio=180,
                             caracteristicas = caracteristicas_plan_premium,
-                            borde_color=Colors.COFFEE.value
+                            borde_color=Colors.COFFEE_DARK.value,
+                            bg= Colors.COFFEE.value,
                         ),
                         displey="flex",
                         flex_flow="row wrap",

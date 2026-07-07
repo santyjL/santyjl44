@@ -18,16 +18,19 @@ proyectos = [
         "titulo": "Tarjeta De Boda",
         "descripcion": "Una experiencia digital diseñada para acompañar un momento especial. Los invitados pueden acceder a fotografías, recuerdos e información del evento desde cualquier dispositivo, conservando la esencia de la celebración en un solo lugar.",
         "url":"https://raul-y-tatiana.vercel.app/"
-
+    },
+    {
+        "src": rx.asset("proyectos/proyecto3.png"),
+        "titulo": "Tarjeta De Boda",
+        "descripcion": "Una experiencia digital diseñada para acompañar un momento especial. Los invitados pueden acceder a fotografías, recuerdos e información del evento desde cualquier dispositivo, conservando la esencia de la celebración en un solo lugar.",
+        "url":"https://raul-y-tatiana.vercel.app/"
     },
 ]
 
 caracteristicas_plan_basico: list[str] = [
     "Diseño personalizado",
     "Diseño adaptable a móviles",
-    "Hasta 3 secciones",
     "Formulario de contacto",
-    "Botón directo a WhatsApp",
     "Integración de redes sociales",
     "Optimización básica de velocidad",
     "Despliegue gratuito en Vercel",
@@ -36,20 +39,17 @@ caracteristicas_plan_basico: list[str] = [
 
 caracteristicas_plan_profesional: list[str] = [
     "Todo lo incluido en el Plan Básico",
-    "Hasta 7 secciones",
     "Galería de imágenes",
-    "Animaciones e interacciones avanzadas",
+    "Animaciones",
     "Google Maps integrado",
     "SEO básico",
-    "Dominio personalizado (configuración)",
-    "Optimización avanzada de velocidad",
+    "Optimización de velocidad",
     "Soporte durante 15 días",
     "Entrega en 5 a 7 días",
 ]
 
 caracteristicas_plan_premium: list[str] = [
     "Todo lo incluido en el Plan Profesional",
-    "Secciones ilimitadas",
     "Integración de APIs públicas",
     "Estadísticas y métricas",
     "Blog o catálogo informativo",
@@ -57,5 +57,5 @@ caracteristicas_plan_premium: list[str] = [
     "Optimización SEO avanzada",
     "Diseño completamente a medida",
     "Soporte prioritario durante 30 días",
-    "Capacitación básica de uso",
+    "Entrega de 5 a 9 días"
 ]

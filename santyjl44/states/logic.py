@@ -34,10 +34,8 @@ class ContactState(rx.State):
 class HeroState(rx.State):
 
     words = [
-        "PROGRAMO",
-        "PROGRESO",
-        "PROACTIVO",
-        "PROSPERO",
+        "DISEÑO WEB",
+        "PUBLICIDAD",
     ]
 
     current_word_index: int = 0

@@ -409,8 +409,12 @@ card_servicios = {
     "padding": "10px",
     "margin" : "0.5em",
     "width" : "23%",
+    "position" : "relative",
+    "top" : 0,
     "background-color" : Colors.PAPER.value,
     "border_radius" : "20px",
+    "box-shadow" : f"0 0 10px 0 {Colors.DESTACAR.value}",
+    "transition" : "all 0.2s 0.1s",
     TABLET: {
             "width": "100%",
         },
@@ -418,16 +422,26 @@ card_servicios = {
     MOBILE: {
         "width": "100%",
     },
+
+    "_hover" : {
+        "scale" : "1.05",
+        "box-shadow" : f"0 0 25px 0 {Colors.PAPER.value}",
+        "top" : "-10px"
+    }
 }
 
 card_precios = {
     "height" : "500px",
     "padding": "10px",
-    "margin" : "0.5em",
+    "margin" : "0.5em 1em",
     "width" : "30%",
     "background-color" : Colors.PAPER.value,
     "border_radius" : "20px",
     "align-items" : "center",
+    "position" : "relative",
+    "top" : 0,
+    "box-shadow" : f"0 0 10px 0 {Colors.DESTACAR.value}",
+    "transition" : "all 0.2s 0.1s",
     TABLET: {
             "width": "100%",
         },
@@ -435,6 +449,12 @@ card_precios = {
     MOBILE: {
         "width": "100%",
     },
+
+    "_hover" : {
+        "scale" : "1.05",
+        "box-shadow" : f"0 0 25px 5px {Colors.WHITE.value}",
+        "top" : "-20px"
+    }
 }
 
 ofrezco_servicio_style = dict(
@@ -453,6 +473,13 @@ ofrezco_servicio_style = dict(
 proyectos_style = {
     "width": "400px",
     "height": "250px",
+    "border" : f"2px solid {Colors.DESTACAR.value}",
+    "border-radius" : "10px",
+    "object-fit" : "cover",
+    "position" : "relative",
+    "top" : 0,
+    "box-shadow" : f"0 0 5px 0 {Colors.DESTACAR.value}",
+    "transition" : "box-shadow, scale, top .5s .2s",
 
     TABLET: {
         "width": "320px",
@@ -463,6 +490,11 @@ proyectos_style = {
         "width": "280px",
         "height": "180px",
     },
+    "_hover" : {
+        "box-shadow" : f"0 0 20px 0 {Colors.DESTACAR.value}",
+        "scale" : "1.07",
+        "top" : "-20px"
+    }
 }
 
 proyecto_modal = {

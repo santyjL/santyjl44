@@ -24,7 +24,7 @@ def hero() -> rx.Component:
                 style=hero_titulo_style
             ),
             rx.text(
-                "Desarrollo soluciones digitales que combinan diseño, funcionalidad y una experiencia unica.",
+                "Sitios webs modernos que transmiten Confianza y ayudan a convertir visitantes en clientes reales.",
                 style=hero_texto_style
             ),
             rx.flex(
