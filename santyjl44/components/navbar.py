@@ -40,13 +40,14 @@ def navbar_movil () -> rx.Component:
                         ),
                         rx.drawer.close(
                             identificadores("Servicios", ROUTES["services"]),
+                        ),
                         rx.drawer.close(
                             identificadores("Proyectos", ROUTES["proyectos"]),
                         ),
                         rx.drawer.close(
                             identificadores("Sobre Mi", ROUTES["about"]),
                         ),
-                        ),rx.drawer.close(
+                        rx.drawer.close(
                             identificadores("Contacto", ROUTES["contact"]),
                         ),
 

@@ -20,10 +20,10 @@ proyectos = [
         "url":"https://raul-y-tatiana.vercel.app/"
     },
     {
-        "src": rx.asset("proyectos/proyecto3.png"),
-        "titulo": "Tarjeta De Boda",
-        "descripcion": "Una experiencia digital diseñada para acompañar un momento especial. Los invitados pueden acceder a fotografías, recuerdos e información del evento desde cualquier dispositivo, conservando la esencia de la celebración en un solo lugar.",
-        "url":"https://raul-y-tatiana.vercel.app/"
+        "src": rx.asset("proyectos/proyecto4.png"),
+        "titulo": "SantyJL | Landing Personal",
+        "descripcion": "Mi espacio digital principal, diseñado para presentar mis servicios, proyectos y proceso de trabajo de forma clara y profesional. Esta landing combina diseño, desarrollo web y estrategia comercial para convertir visitantes en potenciales clientes mientras refleja mi estilo y forma de construir experiencias digitales.",
+        "url": "https://santyjl.vercel.app/"
     },
 ]
 
