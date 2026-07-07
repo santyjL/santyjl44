@@ -39,13 +39,13 @@ def navbar_movil () -> rx.Component:
                             identificadores("Inicio", "/"),
                         ),
                         rx.drawer.close(
-                            identificadores("Sobre Mi", ROUTES["about"]),
-                        ),
+                            identificadores("Servicios", ROUTES["services"]),
                         rx.drawer.close(
                             identificadores("Proyectos", ROUTES["proyectos"]),
                         ),
                         rx.drawer.close(
-                            identificadores("Servicios", ROUTES["services"]),
+                            identificadores("Sobre Mi", ROUTES["about"]),
+                        ),
                         ),rx.drawer.close(
                             identificadores("Contacto", ROUTES["contact"]),
                         ),
@@ -82,9 +82,9 @@ def navbar() -> rx.Component:
             rx.desktop_only(
                 rx.hstack(
                     identificadores("Inicio", "/"),
-                    identificadores("Sobre Mi", ROUTES["about"]),
-                    identificadores("Proyectos", ROUTES["proyectos"]),
                     identificadores("Servicios", ROUTES["services"]),
+                    identificadores("Proyectos", ROUTES["proyectos"]),
+                    identificadores("Sobre Mi", ROUTES["about"]),
                     identificadores("Contacto", ROUTES["contact"]),
                     spacing="5",
                 )

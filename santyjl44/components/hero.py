@@ -30,7 +30,8 @@ def hero() -> rx.Component:
             rx.flex(
                 boton_contacto(),
                 cv_descarga(),
-                flex_flow="row wrap"
+                flex_flow="row wrap",
+                gap="10px"
             )
 
         ),
