@@ -363,13 +363,30 @@ servicios_seccion = {
     "padding": "2rem",
 
     TABLET: {
-        "width": "45%",
+        "width": "100%",
     },
 
     MOBILE: {
         "width": "100%",
     },
 }
+
+precios_style = {
+    "width": "100%",
+    "min_height": "400px",
+    "background": Colors.PAPER_DARK.value,
+    "border_radius": "20px",
+    "padding": "2rem",
+
+    TABLET: {
+        "width": "100%",
+    },
+
+    MOBILE: {
+        "width": "100%",
+    },
+}
+
 
 proceso_seccion = {
     "width": "100%",
@@ -394,6 +411,23 @@ card_servicios = {
     "width" : "23%",
     "background-color" : Colors.PAPER.value,
     "border_radius" : "20px",
+    TABLET: {
+            "width": "100%",
+        },
+
+    MOBILE: {
+        "width": "100%",
+    },
+}
+
+card_precios = {
+    "height" : "500px",
+    "padding": "10px",
+    "margin" : "0.5em",
+    "width" : "30%",
+    "background-color" : Colors.PAPER.value,
+    "border_radius" : "20px",
+    "align-items" : "center",
     TABLET: {
             "width": "100%",
         },

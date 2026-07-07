@@ -1,7 +1,9 @@
 import reflex as rx
-
+from ..states.lista_proyectos import caracteristicas_plan_basico, caracteristicas_plan_premium, caracteristicas_plan_profesional
 from ..style import (
-    Colors, servicios_seccion,proceso_seccion,card_servicios,ofrezco_servicio_style,Font
+    Colors, servicios_seccion,precios_style,
+    proceso_seccion,card_servicios,ofrezco_servicio_style,
+    Font, card_precios, boton_style
     )
 
 def titulo_card_trabajo(icon, titulo, subtitulo) -> rx.Component:
@@ -63,46 +65,59 @@ def contenido_cards_servicios(icon, titulo, descripcion) -> rx.Component:
     )
 
 def contenido_cards_proceso(num, titulo, descripcion) -> rx.Component:
-    return rx.hstack(
+    return rx.vstack(
         rx.box(
             rx.text(
                 num,
                 font_size="1.3em",
                 width="32px",
                 height="32px",
+                border_radius="50%",
                 color=Colors.PAPER.value,
+                bg=Colors.ACCENT.value,
             ),
-            bg=Colors.ACCENT.value,
-            padding="0.3em",
-            text_align="center",
-            border_radius="50%"
+            text_align="center"
         ),
         rx.vstack(
             rx.heading(titulo, font_size="1.1em"),
             rx.text(descripcion,position="relative", top="-10px", opacity=0.7)
-        )
+        ),
+        style=card_servicios
     )
 
-def contenido_cards_tecnologias(icon, nombre) -> rx.Component:
-    return rx.box(
-        rx.hstack(
-            rx.image(
-                src=icon,
-                font_size="1.3em",
-                width="32px",
-                height="32px",
-                color=Colors.PAPER.value,
-            ),
-            rx.heading(
-                nombre,
-                font_size="1.1em"
-            ),
-            bg=Colors.ACCENT.value,
-            padding="0.3em",
-            text_align="center",
-            border_radius="10px",
-            margin_bottom="5px"
+def precios_cards(nombre:str, precio:int, caracteristicas:list[str], borde_color="#999") -> rx.Component:
+    return rx.vstack(
+        rx.text(
+            nombre,
+            font_family=Font.TITLE.value,
+            font_size="2em",
+            weight="bold",
+            color=Colors.ACCENT.value
         ),
+        rx.text(
+            f"{precio}$",
+            font_size="4em"
+        ),
+        rx.box(
+            *[
+            rx.hstack(
+                rx.text(
+                "☕"
+                ),
+                rx.text(
+                caracteristica,
+                font_size="1em"
+                )
+            )
+            for caracteristica in caracteristicas
+            ]
+        ),
+        rx.button(
+            "Elegir Plan",
+            style=boton_style
+        ),
+        style=card_precios,
+        border=f"2px solid {borde_color}"
     )
 
 def ofrezco_servicio () -> rx.Component:
@@ -138,35 +153,69 @@ def ofrezco_servicio () -> rx.Component:
                     displey="flex",
                     flex_flow="row wrap"
                 ),
-                
                 style=servicios_seccion
             ),
+            rx.flex(
+                rx.box(
+                    rx.center(
+                        precios_cards(
+                            nombre="Basico",
+                            precio=70,
+                            caracteristicas = caracteristicas_plan_basico
+                        ),
+                        precios_cards(
+                            nombre="Profecional",
+                            precio=120,
+                            caracteristicas = caracteristicas_plan_profesional,
+                            borde_color=Colors.ACCENT.value
+                        ),
+                        precios_cards(
+                            nombre="Premium",
+                            precio=180,
+                            caracteristicas = caracteristicas_plan_premium,
+                            borde_color=Colors.COFFEE.value
+                        ),
+                        displey="flex",
+                        flex_flow="row wrap",
+
+                    ),
+                    style=precios_style
+                ),
+                width="100%"
+            ),
+            rx.flex(
             rx.box(
                 titulo_card_trabajo(
                     "rocket",
                     "Mi Proceso De Trabajo",
                     "Simple, claro y efectivo"
                 ),
-                contenido_cards_proceso(
-                    num=1,
-                    titulo="Descubrimiento",
-                    descripcion="Analizo tu idea, necesidades y objetios para entender tu proyecto"
+                rx.center(
+                    contenido_cards_proceso(
+                        num=1,
+                        titulo="Descubrimiento",
+                        descripcion="Analizo tu idea, necesidades y objetios para entender tu proyecto"
                     ),
-                contenido_cards_proceso(
-                    num=2,
-                    titulo="Diseño y Planificacion",
-                    descripcion="Estructuro la infomarcion  y diseño el UI/UX"
+                    contenido_cards_proceso(
+                        num=2,
+                        titulo="Diseño y Planificacion",
+                        descripcion="Estructuro la infomarcion  y diseño el UI/UX"
                     ),
-                contenido_cards_proceso(
-                    num=3,
-                    titulo="Desarrollo",
-                    descripcion="Desarrollo tu web con codigo limpio , rapido y escalable"
+                    contenido_cards_proceso(
+                        num=3,
+                        titulo="Desarrollo",
+                        descripcion="Desarrollo tu web con codigo limpio , rapido y escalable"
                     ),
-                contenido_cards_proceso(
-                    num=4,
-                    titulo="Entrega y Soporte",
-                    descripcion="Entrego tu Pagina, desplegada y con soporte para que todo funcione perfectamente"
-                    ),
+                    contenido_cards_proceso(
+                        num=4,
+                        titulo="Entrega y Soporte",
+                        descripcion="Entrego tu Pagina, desplegada y con soporte para que todo funcione perfectamente"
+                    ),  
+                    displey="flex",
+                    flex_flow="row wrap"
+                )
+                
+            ),
             style=proceso_seccion
             ),
             style=ofrezco_servicio_style,
