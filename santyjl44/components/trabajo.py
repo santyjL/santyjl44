@@ -204,17 +204,17 @@ def ofrezco_servicio () -> rx.Component:
                     contenido_cards_proceso(
                         num=1,
                         titulo="Descubrimiento",
-                        descripcion="Analizo tu idea, necesidades y objetios para entender tu proyecto"
+                        descripcion="Analizo tu idea, necesidades y objetivos para entender tu proyecto"
                     ),
                     contenido_cards_proceso(
                         num=2,
-                        titulo="Diseño y Planificacion",
-                        descripcion="Estructuro la infomarcion  y diseño el UI/UX"
+                        titulo="Diseño y Planificación",
+                        descripcion="Estructuro la infomarción y diseño el UI/UX"
                     ),
                     contenido_cards_proceso(
                         num=3,
                         titulo="Desarrollo",
-                        descripcion="Desarrollo tu web con codigo limpio , rapido y escalable"
+                        descripcion="Desarrollo tu web con código limpio, rápido y escalable"
                     ),
                     contenido_cards_proceso(
                         num=4,
