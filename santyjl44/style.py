@@ -98,7 +98,7 @@ navbar_style = {
     "background": Colors.NAVBAR.value,
     "backdrop_filter": "blur(12px)",
     "width": "80%",
-    "height": "60px",
+    "height": "50px",
     "padding": "0.5rem 1rem",
     "position": "fixed",
     "top": "10px",
@@ -478,6 +478,7 @@ proyectos_style = {
     "object-fit" : "cover",
     "position" : "relative",
     "top" : 0,
+    "scale" : "1.0",
     "box-shadow" : f"0 0 5px 0 {Colors.DESTACAR.value}",
     "transition" : "box-shadow, scale, top .5s .2s",
 

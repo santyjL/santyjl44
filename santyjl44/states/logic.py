@@ -36,6 +36,7 @@ class HeroState(rx.State):
     words = [
         "DISEÑO WEB",
         "PUBLICIDAD",
+        "PLANIFICACIÓN"
     ]
 
     current_word_index: int = 0

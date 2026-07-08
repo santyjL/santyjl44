@@ -90,7 +90,8 @@ def precios_cards(
     precio:int,
     caracteristicas:list[str],
     borde_color="#999",
-    bg=Colors.PAPER.value
+    bg=Colors.PAPER.value,
+    color=Colors.TEXT_DARK.value
     ) -> rx.Component:
 
     return rx.vstack(
@@ -102,14 +103,14 @@ def precios_cards(
             color=Colors.ACCENT.value
         ),
         rx.text(
-            f"{precio}$",
+            f"${precio}",
             font_size="4em"
         ),
         rx.box(
             *[
             rx.hstack(
                 rx.text(
-                "☕"
+                "✔",
                 ),
                 rx.text(
                 caracteristica,
@@ -122,7 +123,8 @@ def precios_cards(
         style=card_precios,
         bg= bg,
         border_top=f"3px solid {borde_color}",
-        border_bottom=f"2px solid {borde_color}"
+        border_bottom=f"2px solid {borde_color}",
+        color=color
     )
 
 def ofrezco_servicio () -> rx.Component:
@@ -138,22 +140,22 @@ def ofrezco_servicio () -> rx.Component:
                     contenido_cards_servicios(
                         icon="monitor",
                         titulo="Landing Pages",
-                        descripcion="Paginas personalizadas y relevantes donde los visitantes se convierten en nuevos clientes"
+                        descripcion="páginas personalizadas y relevantes donde los visitantes se convierten en nuevos clientes"
                     ),
                     contenido_cards_servicios(
                         icon="building-2",
                         titulo="Sitios Empresariales",
-                        descripcion="Webs profecionales que reflejan la identidad de la marca"
+                        descripcion="Webs profesionales que reflejan la identidad de la marca"
                     ),
                     contenido_cards_servicios(
                         icon="square-user-round",
-                        titulo="Porfolios",
-                        descripcion="Muestra tus trabajos de forma clara, atractiva y profecional"
+                        titulo="Portafolios",
+                        descripcion="Muestra tus trabajos de forma clara, atractiva y profesional"
                     ),
                     contenido_cards_servicios(
                         icon="unlink",
                         titulo="Link Bios",
-                        descripcion="Paginas de enlaces personalizados para centralizar tu presencia ONLINE"
+                        descripcion="páginas de enlaces personalizados para centralizar tu presencia ONLINE"
                     ),
                     displey="flex",
                     flex_flow="row wrap"
@@ -169,7 +171,7 @@ def ofrezco_servicio () -> rx.Component:
                             caracteristicas = caracteristicas_plan_basico
                         ),
                         precios_cards(
-                            nombre="Profecional",
+                            nombre="Profesional",
                             precio=120,
                             caracteristicas = caracteristicas_plan_profesional,
                             borde_color=Colors.ACCENT.value,
@@ -181,6 +183,7 @@ def ofrezco_servicio () -> rx.Component:
                             caracteristicas = caracteristicas_plan_premium,
                             borde_color=Colors.COFFEE_DARK.value,
                             bg= Colors.COFFEE.value,
+                            color=Colors.TEXT_LIGHT.value
                         ),
                         displey="flex",
                         flex_flow="row wrap",
@@ -216,7 +219,7 @@ def ofrezco_servicio () -> rx.Component:
                     contenido_cards_proceso(
                         num=4,
                         titulo="Entrega y Soporte",
-                        descripcion="Entrego tu Pagina, desplegada y con soporte para que todo funcione perfectamente"
+                        descripcion="Entrego tu página, desplegada y con soporte para que todo funcione perfectamente"
                     ),  
                     displey="flex",
                     flex_flow="row wrap"

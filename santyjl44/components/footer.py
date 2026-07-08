@@ -17,7 +17,7 @@ def footer_items_1() -> rx.Component:
             as_="h3"
             ),
         footer_item("Inicio", "/#"),
-        footer_item("Sobre Mi", ROUTES["about"]),
+        footer_item("Sobre Mí", ROUTES["about"]),
         footer_item("proyectos", ROUTES["proyectos"]),
         footer_item("Servicios", ROUTES["services"]),
         footer_item("Contacto", ROUTES["contact"]),
@@ -55,20 +55,11 @@ def footer() -> rx.Component:
         rx.vstack(
             rx.flex(
                 rx.vstack(
-                    rx.hstack(
-                        rx.image(
-                            src=rx.asset("favicon.ico"),
-                            width="2.25em",
-                            height="auto",
-                            border_radius="25%",
-                        ),
-                        rx.heading(
-                            "SANTYJL",
-                            size="7",
-                            font_family=Font.HANDWRITING.value,
-                            weight="bold"
-                            ),
-                        align_items="center",
+                    rx.heading(
+                        "SANTYJL",
+                        size="7",
+                        font_family=Font.HANDWRITING.value,
+                        weight="bold"
                     ),
                     rx.text(
                         "Desarrollador Web Y Otras Cosas",
@@ -78,7 +69,7 @@ def footer() -> rx.Component:
                         weight="bold",
                     ),
                     rx.text(
-                        "Creando experiencias digitales con amor y pasion.",
+                        "Creando experiencias digitales con amor y pasión.",
                         size="3",
                         white_space="wrap",
                         weight="medium",
